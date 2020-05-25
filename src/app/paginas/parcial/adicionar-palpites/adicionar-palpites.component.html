@@ -1,0 +1,156 @@
+<div class="row">
+  <div class="container">
+    <div class="col-12 col-md-10">
+      <div class="card">
+        <h3 class="card-header">Palpites</h3>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <div class="form-group row">
+            <label for="codigo" class="col-sm-2 col-form-label font-weight-bold">Código</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="codigo" name="codigo" ngModel="{{ (usuarioService.usuario$ | async)?.id }}">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="nome" class="col-sm-2 col-form-label font-weight-bold">Nome</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="nome" name="nome" ngModel="{{ (usuarioService.usuario$ | async)?.nome }}">
+            </div>
+          </div>
+          
+          <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label font-weight-bold">E-mail</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="email" name="email" ngModel="{{ (usuarioService.usuario$ | async)?.email }}">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="contato" class="col-sm-2 col-form-label font-weight-bold">Contato</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="contato" name="contato" ngModel="{{ (usuarioService.usuario$ | async)?.contato }}">
+            </div>
+          </div>
+          
+          <form>
+            <table class="table table-condensed table-striped ">
+                <thead>
+                    <th class="col-md-1 text-center" colspan="3">Time Mandante</th>
+                    <th class="col-md-1 text-center">X</th>
+                    <th class="col-md-1 text-center" colspan="3">Time Vistante</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-md-1 text-left">
+                          <div class="checkbox icheck-success">
+                            <input type="checkbox" id="inter" name="success" /> <label for="inter"></label>
+                          </div>
+                        </td>
+                        <td class="col-md-1 text-left">
+                            <img src="https://e.imguol.com/futebol/brasoes/40x40/internacional.png">
+                        </td>
+                        <td class="col-md-1 text-left"> Inter-RS </td>
+                        <td class="col-md-1 text-center">
+                          <div class="checkbox icheck-success">
+                            <input type="checkbox" id="empate1" name="success" /> <label for="empate1"></label>
+                          </div>
+                        </td>
+                        <td class="col-md-1 text-right">
+                            <img src="https://e.imguol.com/futebol/brasoes/40x40/gremio.png">
+                        </td>
+                        <td class="col-md-1 text-right"> Gremio-RS </td>
+                        <td class="col-md-1 text-right">
+                          <div class="checkbox icheck-success">
+                            <input type="checkbox" id="gremio" name="success" /> <label for="gremio"></label>
+                          </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-1 text-left">
+                            <div class="checkbox icheck-success">
+                                <input type="checkbox" id="vasco" name="success" /> <label for="vasco"></label>
+                            </div>
+                        </td>
+                        <td class="col-md-1 text-left">
+                            <img src="https://e.imguol.com/futebol/brasoes/40x40/vasco.png">
+                        </td>
+                        <td class="col-md-1 text-left"> Vasco </td>
+                        <td class="col-md-1 text-center">
+                            <div class="checkbox icheck-success">
+                                <input type="checkbox" id="empate2" name="success" /> <label
+                                    for="empate2"></label>
+                            </div>
+                        </td>
+                        <td class="col-md-1 text-right">
+                            <img src="https://e.imguol.com/futebol/brasoes/40x40/flamengo.png">
+                        </td>
+                        <td class="col-md-1 text-right"> Flamengo </td>
+                        <td class="col-md-2 text-right">
+                          <div class="checkbox icheck-success">
+                            <input type="checkbox" id="flamengo" name="success" /> <label for="flamengo"></label>
+                          </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-1 text-left">
+                            <div class="checkbox icheck-success">
+                                <input type="checkbox" id="palmeiras" name="success" /> <label
+                                    for="palmeiras"></label>
+                            </div>
+                        </td>
+                        <td class="col-md-1 text-left">
+                            <img src="https://e.imguol.com/futebol/brasoes/40x40/palmeiras.png">
+                        </td>
+                        <td class="col-md-1 text-left"> Palmeiras </td>
+                        <td class="col-md-1 text-center">
+                            <div class="checkbox icheck-success">
+                                <input type="checkbox" id="empate3" name="success" /> <label
+                                    for="empate3"></label>
+                            </div>
+                        </td>
+                        <td class="col-md-1 text-right">
+                            <img src="https://e.imguol.com/futebol/brasoes/40x40/santos.png">
+                        </td>
+                        <td class="col-md-1 text-right"> Santos </td>
+                        <td class="col-md-1 text-right">
+                            <div class="checkbox icheck-success">
+                                <input type="checkbox" id="santos" name="success" /> <label
+                                    for="santos"></label>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+
+        </form>
+
+
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary btn-sm" routerLink="/jogador">Voltar</button>
+            <div>&nbsp;</div>
+            <button type="submit" class="btn btn-success btn-sm" routerLink="">Salvar</button>
+          </div> 
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
