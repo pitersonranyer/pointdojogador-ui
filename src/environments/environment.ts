@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
- // linguagensApiUrl: 'http://localhost:3000/api',
-  linguagensApiUrl: 'https://futnaveia-api.herokuapp.com/',
+  linguagensApiUrl: 'http://localhost:3000/api',
+ // linguagensApiUrl: 'https://pointdojogador-api.herokuapp.com/api',
   toastConfig: {
     positionClass: 'toast-top-right',
     preventDuplicates: true,
