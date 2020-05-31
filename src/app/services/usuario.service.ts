@@ -23,7 +23,6 @@ export class UsuarioService {
   }
 
   cadastrar(usuario: Usuario) {
-    console.log(usuario);
     const url = `${environment.linguagensApiUrl}/usuarios`;
     return this.http.post(url, usuario);
   }

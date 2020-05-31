@@ -9,6 +9,7 @@ import { JogadorComponent } from './paginas/parcial/jogador/jogador.component';
 import { AlterarJogadorComponent } from './paginas/parcial/alterar-jogador/alterar-jogador.component';
 import { AdicionarPalpitesComponent } from './paginas/parcial/adicionar-palpites/adicionar-palpites.component';
 import { AdministradorComponent } from './paginas/parcial/administrador/administrador.component';
+import { CadastrarCartelaComponent } from './paginas/parcial/cadastrar-cartela/cadastrar-cartela.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/not-auth.guard';
 
@@ -53,7 +54,11 @@ const routes: Routes = [
     component: AdministradorComponent,
     canActivate: [AuthGuard]
   },
-
+  {
+    path: 'cadastrarCartela',
+    component: CadastrarCartelaComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: '**', redirectTo: ''
   }

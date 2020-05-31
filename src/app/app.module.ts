@@ -23,6 +23,7 @@ import { JogadorComponent } from './paginas/parcial/jogador/jogador.component';
 import { AlterarJogadorComponent } from './paginas/parcial/alterar-jogador/alterar-jogador.component';
 import { AdicionarPalpitesComponent } from './paginas/parcial/adicionar-palpites/adicionar-palpites.component';
 import { AdministradorComponent } from './paginas/parcial/administrador/administrador.component';
+import { CadastrarCartelaComponent } from './paginas/parcial/cadastrar-cartela/cadastrar-cartela.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { AdministradorComponent } from './paginas/parcial/administrador/administ
     JogadorComponent,
     AlterarJogadorComponent,
     AdicionarPalpitesComponent,
-    AdministradorComponent
+    AdministradorComponent,
+    CadastrarCartelaComponent
 
   ],
   imports: [
