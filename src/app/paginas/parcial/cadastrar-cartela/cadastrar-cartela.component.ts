@@ -56,10 +56,7 @@ export class CadastrarCartelaComponent implements OnInit {
         } else {
           this.toastr.error('Não foi possível realizar cadastro.', 'Falha!');
         }
-      }
-    )
-
-
+      });
 
   }
 }
