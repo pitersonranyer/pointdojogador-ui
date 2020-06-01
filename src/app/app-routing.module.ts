@@ -10,6 +10,7 @@ import { AlterarJogadorComponent } from './paginas/parcial/alterar-jogador/alter
 import { AdicionarPalpitesComponent } from './paginas/parcial/adicionar-palpites/adicionar-palpites.component';
 import { AdministradorComponent } from './paginas/parcial/administrador/administrador.component';
 import { CadastrarCartelaComponent } from './paginas/parcial/cadastrar-cartela/cadastrar-cartela.component';
+import { CadastrarJogosComponent } from './paginas/parcial/cadastrar-jogos/cadastrar-jogos.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/not-auth.guard';
 
@@ -59,6 +60,13 @@ const routes: Routes = [
     component: CadastrarCartelaComponent,
     canActivate: [AuthGuard]
   },
+
+  {
+    path: 'cadastrarJogos',
+    component: CadastrarJogosComponent,
+    canActivate: [AuthGuard]
+  },
+
   {
     path: '**', redirectTo: ''
   }

@@ -6,6 +6,8 @@ import { Cartela } from '../../../interfaces/cartela';
 import { Jogos } from '../../../interfaces/jogos';
 import { ToastrService } from 'ngx-toastr';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-cadastrar-cartela',
   templateUrl: './cadastrar-cartela.component.html',
@@ -19,7 +21,8 @@ export class CadastrarCartelaComponent implements OnInit {
 
   constructor(private timesService: TimesService,
     private toastr: ToastrService,
-    public cartelaService: CartelaService) { }
+    public cartelaService: CartelaService,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -31,20 +34,16 @@ export class CadastrarCartelaComponent implements OnInit {
 
   }
 
-
   atualizarListaCartela() {
     this.cartelaService.listarCartelas().subscribe((cartela: any[]) => {
       this.itensCartela = cartela;
-      console.log(cartela);
-    }, () => {
+      }, () => {
       this.toastr.error('Falha listar cartelas.', 'Falha!');
     });
   }
 
 
   onSubmit(form: NgForm) {
-
-    console.log(this.cartela);
     this.cartelaService.cadastrar(this.cartela).subscribe(
       () => {
         this.toastr.success('Cadastro realizado com sucesso', 'Show!');
@@ -59,5 +58,10 @@ export class CadastrarCartelaComponent implements OnInit {
       });
 
   }
+
+  cadastrarJogos(cartela: Cartela): void {
+    this.router.navigate(['/cadastrarJogos'], {queryParams: cartela});
+  }
+
 }
 

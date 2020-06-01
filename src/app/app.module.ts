@@ -24,6 +24,7 @@ import { AlterarJogadorComponent } from './paginas/parcial/alterar-jogador/alter
 import { AdicionarPalpitesComponent } from './paginas/parcial/adicionar-palpites/adicionar-palpites.component';
 import { AdministradorComponent } from './paginas/parcial/administrador/administrador.component';
 import { CadastrarCartelaComponent } from './paginas/parcial/cadastrar-cartela/cadastrar-cartela.component';
+import { CadastrarJogosComponent } from './paginas/parcial/cadastrar-jogos/cadastrar-jogos.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { CadastrarCartelaComponent } from './paginas/parcial/cadastrar-cartela/c
     AlterarJogadorComponent,
     AdicionarPalpitesComponent,
     AdministradorComponent,
-    CadastrarCartelaComponent
+    CadastrarCartelaComponent,
+    CadastrarJogosComponent
 
   ],
   imports: [

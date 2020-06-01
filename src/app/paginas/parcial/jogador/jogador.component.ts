@@ -18,7 +18,7 @@ export class JogadorComponent implements OnInit {
    Codigo: ${form.value.codigo}
    credito: ${form.value.addCredito} `;
 
-   console.log(dados);
+   // console.log(dados);
  }
 
 }

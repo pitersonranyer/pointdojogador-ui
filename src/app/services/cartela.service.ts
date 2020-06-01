@@ -23,7 +23,6 @@ export class CartelaService {
 
   cadastrar(cartela: Cartela) {
     const url = `${environment.linguagensApiUrl}/cartelas`;
-    console.log(url);
     return this.http.post(url, cartela);
   }
 
@@ -37,7 +36,6 @@ export class CartelaService {
 
   getListaCartelas(): Observable<Cartela[]> {
     const url = `${environment.linguagensApiUrl}/cartelas/todas`;
-    console.log(url);
     return this.http.get<Cartela[]>(url);
   }
 

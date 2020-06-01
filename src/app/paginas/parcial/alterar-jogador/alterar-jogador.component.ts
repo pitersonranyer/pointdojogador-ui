@@ -20,7 +20,7 @@ export class AlterarJogadorComponent implements OnInit {
       E-mail: ${form.value.email}
       Celular: ${form.value.celular}`;
 
-      console.log(dados);
+    //  console.log(dados);
     }
 
 }
