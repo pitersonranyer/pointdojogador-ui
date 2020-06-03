@@ -26,7 +26,7 @@ export class CadastroComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.timesService.getJSON().subscribe(data => {
+    this.timesService.getListaTimes().subscribe(data => {
       this.times = data;
      });
 }

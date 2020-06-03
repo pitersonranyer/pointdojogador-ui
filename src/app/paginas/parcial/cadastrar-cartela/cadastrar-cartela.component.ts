@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { TimesService } from 'src/app/services/times.service';
 import { CartelaService } from 'src/app/services/cartela.service';
 import { Cartela } from '../../../interfaces/cartela';
-import { Jogos } from '../../../interfaces/jogos';
 import { ToastrService } from 'ngx-toastr';
 
 import { Router } from '@angular/router';
@@ -15,7 +14,6 @@ import { Router } from '@angular/router';
 })
 export class CadastrarCartelaComponent implements OnInit {
   public cartela: Cartela = <Cartela>{};
-  public jogos: Jogos = <Jogos>{};
   public times: [];
   itensCartela = [];
 
@@ -26,7 +24,7 @@ export class CadastrarCartelaComponent implements OnInit {
 
   ngOnInit() {
 
-    this.timesService.getJSON().subscribe(data => {
+    this.timesService.getListaTimes().subscribe(data => {
       this.times = data;
     });
 

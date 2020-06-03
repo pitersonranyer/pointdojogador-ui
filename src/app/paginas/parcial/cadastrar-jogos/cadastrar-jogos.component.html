@@ -43,30 +43,30 @@
               <tbody>
                 <tr>
                   <td class="col-md-2 text-left">
-                    <select class="form-control" name="timeMandante">
+                    <select class="form-control" [(ngModel)]="jogos.idTimeMandante" name="idTimeMandante" >
                       <option selected [value]="">Selecione...</option>
-                      <option *ngFor="let time of times let i = index" value={{time.id}}>
+                      <option *ngFor="let time of times let i = index" value={{time.id}} >
                         {{time.nomeTime}}
                       </option>
                     </select>
                   </td>
 
                   <td class="col-md-2 text-left">
-                    <select class="form-control" name="timeVisitante">
+                    <select class="form-control" [(ngModel)]="jogos.idTimeVisitante" name="idTimeVisitante" >
                       <option selected [value]="">Selecione...</option>
-                      <option *ngFor="let time of times" value={{time.id}}>
+                      <option *ngFor="let time of times" value={{time.id}} >
                         {{time.nomeTime}}
                       </option>
                     </select>
                   </td>
                   <td class="col-md-2 text-right">
-                    <input class="form-control" type="text" style="text-align: center;" name="dataJogo">
+                    <input class="form-control" type="text" style="text-align: center;" name="dataJogo" [(ngModel)]="jogos.dataJogo">
                   </td>
                   <td class="col-md-2 text-center">
-                    <input class="form-control" type="text" style="text-align: center;" name="nomeEstadio">
+                    <input class="form-control" type="text" style="text-align: center;" name="nomeEstadio" [(ngModel)]="jogos.nomeEstadio">
                   </td>
                   <td class="col-md-2 text-center">
-                    <input class="form-control" type="text" style="text-align: center;" name="situacaoJogo">
+                    <input class="form-control" type="text" style="text-align: center;" name="situacaoJogo" [(ngModel)]="jogos.situacaoJogo">
                   </td>
                 </tr>
 
@@ -87,269 +87,6 @@
     </div>
   </div>
 
-  <div class="col-12 col-md-7">
-    <div class="card">
-      <h3 class="card-header">Jogos da Rodada</h3>
-      <div class="card-body">
-
-        <table class="table table-condensed table-striped ">
-          <thead>
-            <tr>
-              <td align="center" colspan="2" style="font-weight: bold">Time Mandante</td>
-              <td align="center" colspan="2" style="font-weight: bold">Placar</td>
-              <td align="center" colspan="2" style="font-weight: bold">Time Visitante</td>
-              <td align="right" style="font-weight: bold"> Data/Hora </td>
-              <td align="center" style="font-weight: bold"> Situação </td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/internacional.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Inter-RS</div>
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/gremio.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Grêmio-RS</div>
-              </td>
-              <td class="col-md-2 text-right">
-                <label>06/05/2019 16hs</label>
-              </td>
-              <td class="col-md-2 text-center">
-                <img src="assets/img/time-left.png">
-              </td>
-            </tr>
-
-            <tr>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/vasco.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Vasco</div>
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/flamengo.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Flamengo</div>
-              </td>
-              <td class="col-md-2 text-right">
-                <label>06/05/2019 16hs</label>
-              </td>
-              <td class="col-md-2 text-center">
-                <img src="assets/img/football.png">
-              </td>
-            </tr>
-
-            <tr>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/palmeiras.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Palmeiras</div>
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/corinthians.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Corinthians</div>
-              </td>
-              <td class="col-md-2 text-right">
-                <label>06/05/2019 16hs</label>
-              </td>
-              <td class="col-md-2 text-center">
-                <img src="assets/img/checked.png">
-              </td>
-            </tr>
-
-            <tr>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/internacional.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Inter-RS</div>
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/gremio.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Grêmio-RS</div>
-              </td>
-              <td class="col-md-2 text-right">
-                <label>06/05/2019 16hs</label>
-              </td>
-              <td class="col-md-2 text-center">
-                <img src="assets/img/time-left.png">
-              </td>
-            </tr>
-
-            <tr>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/vasco.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Vasco</div>
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/flamengo.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Flamengo</div>
-              </td>
-              <td class="col-md-2 text-right">
-                <label>06/05/2019 16hs</label>
-              </td>
-              <td class="col-md-2 text-center">
-                <img src="assets/img/football.png">
-              </td>
-            </tr>
-
-            <tr>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/palmeiras.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Palmeiras</div>
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/corinthians.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Corinthians</div>
-              </td>
-              <td class="col-md-2 text-right">
-                <label>06/05/2019 16hs</label>
-              </td>
-              <td class="col-md-2 text-center">
-                <img src="assets/img/checked.png">
-              </td>
-            </tr>
-            <tr>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/internacional.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Inter-RS</div>
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/gremio.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Grêmio-RS</div>
-              </td>
-              <td class="col-md-2 text-right">
-                <label>06/05/2019 16hs</label>
-              </td>
-              <td class="col-md-2 text-center">
-                <img src="assets/img/time-left.png">
-              </td>
-            </tr>
-
-            <tr>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/vasco.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Vasco</div>
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/flamengo.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Flamengo</div>
-              </td>
-              <td class="col-md-2 text-right">
-                <label>06/05/2019 16hs</label>
-              </td>
-              <td class="col-md-2 text-center">
-                <img src="assets/img/football.png">
-              </td>
-            </tr>
-
-            <tr>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/palmeiras.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Palmeiras</div>
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value="1">
-              </td>
-              <td class="col-md-1 text-right">
-                <img src="https://e.imguol.com/futebol/brasoes/40x40/corinthians.png">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">Corinthians</div>
-              </td>
-              <td class="col-md-2 text-right">
-                <label>06/05/2019 16hs</label>
-              </td>
-              <td class="col-md-2 text-center">
-                <img src="assets/img/checked.png">
-              </td>
-            </tr>
-          </tbody>
-
-        </table>
-
-      </div>
-    </div>
-  </div>
+  
 
 </div>

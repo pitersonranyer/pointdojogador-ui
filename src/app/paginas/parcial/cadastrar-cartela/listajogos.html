@@ -17,7 +17,7 @@
         <td class="col-md-2 text-left">
           <select class="form-control"  name="timeMandante" [(ngModel)]="jogos.idTimeMandante">
             <option selected [value]="">Selecione...</option>
-            <option *ngFor="let time of times let i = index" value={{time.id}}>
+            <option *ngFor="let time of times" value={{time.id}}>
               {{time.nomeTime}}
             </option>
           </select>
