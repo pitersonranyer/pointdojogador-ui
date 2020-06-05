@@ -16,17 +16,14 @@ import { Time } from '../../../interfaces/time';
 export class CadastrarJogosComponent implements OnInit {
   public cartela: {};
   public idCartela: number;
-
   public jogos: Jogos = <Jogos>{};
   public times: Time[];
   itensJogos = [];
-  public timeJogo: Time = <Time>{};
 
   constructor(private timesService: TimesService,
     private toastr: ToastrService,
     private route: ActivatedRoute,
     public jogosService: JogosService) { }
-  
 
   ngOnInit() {
 
@@ -37,7 +34,7 @@ export class CadastrarJogosComponent implements OnInit {
 
     });
 
-    this.timesService.getListaTimes().subscribe(data => {
+    this.timesService.listartimes().subscribe(data => {
       this.times = data;
     });
 
@@ -53,51 +50,33 @@ export class CadastrarJogosComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.getConsultaTimes(this.jogos.idTimeMandante);
 
+    this.timesService.consutaTimePorId(this.jogos.idTimeMandante)
+      .subscribe(dadosTimeMandante => {
+        this.timesService.consutaTimePorId(this.jogos.idTimeVisitante)
+          .subscribe(dadosTimeVisitante => {
+
+            this.jogos.nomeMandante = dadosTimeMandante.nomeTime;
+            this.jogos.nomeAbvdMandante = dadosTimeMandante.nomeAbvd;
+            this.jogos.UrlEscudoMandante = dadosTimeMandante.UrlEscudo;
+
+            this.jogos.nomeVisitante = dadosTimeVisitante.nomeTime;
+            this.jogos.nomeAbvdVisitante = dadosTimeVisitante.nomeAbvd;
+            this.jogos.UrlEscudoVisitante = dadosTimeVisitante.UrlEscudo;
+
+            this.jogosService.cadastrar(this.jogos).subscribe(
+              () => {
+                this.atualizarListaJogos();
+                this.toastr.success('Cadastro realizado com sucesso', 'Show!');
+              },
+              (erro) => {
+                if (erro.status && erro.status === 409) {
+                  this.toastr.error('jogo já cadastrado.', 'Falha!');
+                } else {
+                  this.toastr.error('Não foi possível realizar o cadastro do jogo.', 'Falha!');
+                }
+              });
+          });
+      });
   }
-
-
- // this.http.get(`assets/${id}/profiles/admin.json`)
- //       .subscribe(result=> {
- //           this.profile = result.json();
- //           //do some stuff 
- //       })
-
-   getConsultaTimes(id: any) {
-    this.timesService.getConsultaTimes(id)
-      .subscribe(jogos => {
-
-        console.log(jogos);
-
-      }, () => { this.toastr.error('Falha recuperar timeMandante.'); });
-  }
-
-
-
-  //this.jogos.nomeMandante     = data.nomeTime;
-  //this.jogos.nomeAbvdMandante = nomeTime;
-  //this.jogos.nomeAbvdMandante = nomeTime;
-
-
-
-
-
-
-  //   this.jogosService.cadastrar(this.jogos).subscribe(
-  //     () => {
-  //       this.toastr.success('Cadastro realizado com sucesso', 'Show!');
-  //       this.atualizarListaJogos();
-  //     },
-  //     (erro) => {
-  //       if (erro.status && erro.status === 409) {
-  //         this.toastr.error('jogo ja cadastrado.', 'Falha!');
-  //       } else {
-  //         this.toastr.error('Não foi possível realizar cadastro do jogo.', 'Falha!');
-  //       }
-  //     });
-
 }
-
-
-

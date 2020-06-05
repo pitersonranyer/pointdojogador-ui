@@ -87,6 +87,59 @@
     </div>
   </div>
 
-  
+  <div class="col-12 col-md-7">
+    <div class="card">
+      <h3 class="card-header">Jogos da Rodada</h3>
+      <div class="card-body">
+
+        <table class="table table-condensed table-striped ">
+          <thead>
+            <tr >
+              <td align="center" colspan="2" style="font-weight: bold">Time Mandante</td>
+              <td align="center" colspan="2" style="font-weight: bold">Placar</td>
+              <td align="center" colspan="2" style="font-weight: bold">Time Visitante</td>
+              <td align="right" style="font-weight: bold"> Data/Hora </td>
+              <td align="center" style="font-weight: bold"> Local </td>
+              <td align="center" style="font-weight: bold"> Situação </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let itens of itensJogos">
+              <td class="col-md-1 text-right">
+                <img src="{{itens.UrlEscudoMandante}}">
+              </td>
+              <td class="col-md-1 text-left">
+                <div class="short-div">{{itens.nomeAbvdMandante}}</div>
+              </td>
+              <td class="col-md-1 text-center">
+                <input class="form-control" type="text" style="text-align: center;" readonly value=" ">
+              </td>
+              <td class="col-md-1 text-center">
+                <input class="form-control" type="text" style="text-align: center;" readonly value=" ">
+              </td>
+              <td class="col-md-1 text-right">
+                <img src="{{itens.UrlEscudoVisitante}}">
+              </td>
+              <td class="col-md-1 text-left">
+                <div class="short-div">{{itens.nomeAbvdVisitante}}</div>
+              </td>
+              <td class="col-md-2 text-right">
+                <label>{{itens.dataJogo}}</label>
+              </td>
+              <td class="col-md-2 text-center">
+                <label>{{itens.nomeEstadio}}</label>
+              </td>
+              <td class="col-md-2 text-center">
+                <label>{{itens.situacaoJogo}}</label>
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+  </div>
 
 </div>

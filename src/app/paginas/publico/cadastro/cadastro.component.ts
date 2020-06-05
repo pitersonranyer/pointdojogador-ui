@@ -6,6 +6,7 @@ import { Usuario } from '../../../interfaces/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { TimesService } from 'src/app/services/times.service';
+import { Time } from '../../../interfaces/time';
 
 @Component({
   selector: 'app-cadastro',
@@ -14,7 +15,7 @@ import { TimesService } from 'src/app/services/times.service';
 })
 export class CadastroComponent implements OnInit {
   public usuario: Usuario = <Usuario>{};
-  public times: [];
+  public times: Time[];
   public termoUsuario = false;
 
 
@@ -26,9 +27,9 @@ export class CadastroComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.timesService.getListaTimes().subscribe(data => {
+    this.timesService.listartimes().subscribe(data => {
       this.times = data;
-     });
+    });
 }
 
   onSubmit() {

@@ -4,6 +4,7 @@ import { TimesService } from 'src/app/services/times.service';
 import { CartelaService } from 'src/app/services/cartela.service';
 import { Cartela } from '../../../interfaces/cartela';
 import { ToastrService } from 'ngx-toastr';
+import { Time } from '../../../interfaces/time';
 
 import { Router } from '@angular/router';
 
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class CadastrarCartelaComponent implements OnInit {
   public cartela: Cartela = <Cartela>{};
-  public times: [];
+  public times: Time[];
   itensCartela = [];
 
   constructor(private timesService: TimesService,
@@ -24,7 +25,7 @@ export class CadastrarCartelaComponent implements OnInit {
 
   ngOnInit() {
 
-    this.timesService.getListaTimes().subscribe(data => {
+    this.timesService.listartimes().subscribe(data => {
       this.times = data;
     });
 

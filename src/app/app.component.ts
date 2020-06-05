@@ -10,7 +10,7 @@ import { TokenService } from './services/token.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  titulo = 'Meu Bolão - Dashboard';
+  titulo = 'Point do Jogador';
 
   constructor(
     private router: Router,
