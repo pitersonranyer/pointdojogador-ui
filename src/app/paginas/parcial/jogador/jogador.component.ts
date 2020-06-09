@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { JogosService } from 'src/app/services/jogos.service';
+
 
 @Component({
   selector: 'app-jogador',
@@ -8,17 +11,29 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./jogador.component.css']
 })
 export class JogadorComponent implements OnInit {
+  itensJogos = [];
 
-  constructor(public usuarioService: UsuarioService) { }
+  constructor(private toastr: ToastrService,
+              public usuarioService: UsuarioService,
+              public jogosService: JogosService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.atualizarListaJogos();
+  }
 
   onSubmit(form: NgForm) {
    const dados = `
    Codigo: ${form.value.codigo}
    credito: ${form.value.addCredito} `;
 
-   // console.log(dados);
  }
+
+ atualizarListaJogos() {
+  this.jogosService.listarJogos().subscribe((jogos: any[]) => {
+    this.itensJogos = jogos;
+  }, () => {
+    this.toastr.error('Falha listar jogos.', 'Falha!');
+  });
+}
 
 }
