@@ -36,7 +36,6 @@
             </div>
           </div>
 
-          <form>
             <table class="table table-condensed table-striped ">
               <thead>
                 <th class="col-md-1 text-center" colspan="3">Time Mandante</th>
@@ -47,7 +46,7 @@
                 <tr *ngFor="let itens of itensJogos; let i = index">
                   <td class="col-md-1 text-left">
                     <div class="checkbox icheck-success">
-                      <input type="checkbox" id="inter" name="success" /> <label for="inter"></label>
+                      <input  [(ngModel)]="mandante[i]" type="checkbox" id="{{itens.idTimeMandante}}" name="mandante" /> <label for="{{itens.idTimeMandante}}"></label>
                     </div>
                   </td>
                   <td class="col-md-1 text-left">
@@ -56,7 +55,8 @@
                   <td class="col-md-1 text-left"> {{itens.nomeAbvdMandante}} </td>
                   <td class="col-md-1 text-center">
                     <div class="checkbox icheck-success">
-                      <input type="checkbox" id="empate1" name="success" /> <label for="empate1"></label>
+                     
+                      <input  [(ngModel)]="empate[i]" type="checkbox"  id="{{i + 100}}" name="empate" /> <label for="{{i + 100}}"></label>
                     </div>
                   </td>
                   <td class="col-md-1 text-right">
@@ -65,13 +65,12 @@
                   <td class="col-md-1 text-right"> {{itens.nomeAbvdVisitante}} </td>
                   <td class="col-md-1 text-right">
                     <div class="checkbox icheck-success">
-                      <input type="checkbox" id="gremio" name="success" /> <label for="gremio"></label>
+                      <input  [(ngModel)]="visitante[i]" type="checkbox" id="{{itens.idTimeVisitante}}" name="visitante" /> <label for="{{itens.idTimeVisitante}}"></label>
                     </div>
                   </td>
                 </tr>
               </tbody>
             </table>
-          </form>
 
           <div class=text-right>
             <div class="btn-group" role="group" aria-label="Basic example">

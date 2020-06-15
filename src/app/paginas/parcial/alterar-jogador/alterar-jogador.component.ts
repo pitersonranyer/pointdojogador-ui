@@ -15,12 +15,9 @@ export class AlterarJogadorComponent implements OnInit {
 
      onSubmit(form: NgForm) {
       const dados = `
-      Codigo: ${form.value.codigo}
-      Nome: ${form.value.nome}
-      E-mail: ${form.value.email}
-      Celular: ${form.value.celular}`;
+      Codigo: ${form.value.codigo}`;
 
-    //  console.log(dados);
+      console.log(dados);
     }
 
 }
