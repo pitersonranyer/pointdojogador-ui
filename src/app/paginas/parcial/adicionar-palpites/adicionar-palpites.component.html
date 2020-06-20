@@ -75,12 +75,58 @@
           <div class=text-right>
             <div class="btn-group" role="group" aria-label="Basic example">
               <button type="button" class="btn btn-primary btn-sm" routerLink="/jogador">Voltar</button>
-              <div>&nbsp;</div>
-              <button type="submit" class="btn btn-success btn-sm" routerLink="">Salvar</button>
+              <div>&nbsp;</div> 
+              <button class="btn btn-success btn-sm" (click)="cadastrarPalpites()">Salvar</button>
             </div>
           </div>
 
         </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-5">
+    <div class="card">
+      <h3 class="card-header">Palpites</h3>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <table class="table table-condensed table-striped">
+          <thead>
+            <tr>
+              <td align="left" style="font-weight: bold">Número Cartela</td>
+              <td align="left" style="font-weight: bold">Numero Palpite</td>
+              <td align="center" style="font-weight: bold">Liberado</td>
+              <td align="center" style="font-weight: bold">  </td>
+              <td align="center" style="font-weight: bold">  </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let palpite of listaPalpite">
+              <td class="col-md-1 text-left">
+                {{palpite.idCartela}}
+              </td>
+              <td class="col-md-1 text-left">
+                {{palpite.numeroPalpite}}
+              </td>
+              <td class="col-md-1 text-center">
+                <div *ngIf="palpite.palpiteLiberado" class="checkbox icheck-success">
+                  <input  [checked]="palpite.palpiteLiberado" type="checkbox"  id="{{palpite.palpiteLiberado}}" name="palpiteLiberado" disabled /> <label for="{{palpite.palpiteLiberado}}"></label>
+                </div>
+                <div *ngIf="!palpite.palpiteLiberado" class="checkbox icheck-danger">
+                  <input  [checked]="true" type="checkbox"  id="{{palpite.palpiteLiberado}}" name="palpiteLiberado" disabled /> <label for="{{palpite.palpiteLiberado}}"></label>
+                </div>
+               
+              </td>
+              <td class="col-md-1 text-center">
+                <button class="btn btn-success btn-sm" (click)="consultarPalpites(palpite)">Palpites</button>
+              </td>
+              <td class="col-md-1 text-center">
+                <button class="btn btn-success btn-sm" (click)="excluirPalpite(palpite)">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
       </div>
     </div>
   </div>

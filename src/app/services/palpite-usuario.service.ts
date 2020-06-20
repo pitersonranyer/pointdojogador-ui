@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { PalpiteUsuario } from '../interfaces/palpiteUsuario';
+import { Palpite } from '../interfaces/palpite';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -39,4 +40,17 @@ export class PalpiteUsuarioService {
     return this.http.get<PalpiteUsuario[]>(url);
   }
 
+  listarPalpitePorIdCartelaIdUsuario(idCartela: number, idUsuario: number): Observable<Palpite[]> {
+    const url = `${environment.linguagensApiUrl}/palpite/${idCartela}/${idUsuario}`;
+    return this.http.get<Palpite[]>(url);
+  }
+
+  listarPalpiteUsuarioChave(idCartela: number, idUsuario: number, numeroPalpite: number): Observable<PalpiteUsuario[]> {
+    const url = `${environment.linguagensApiUrl}/palpiteUsuario/${idCartela}/${idUsuario}/${numeroPalpite}`;
+    return this.http.get<PalpiteUsuario[]>(url);
+  }
+  deletaPalpite(idCartela: number, idUsuario: number, numeroPalpite: number): Observable<PalpiteUsuario> {
+    const url = `${environment.linguagensApiUrl}/palpiteUsuario/${idCartela}/${idUsuario}/${numeroPalpite}`;
+    return this.http.delete<PalpiteUsuario>(url);
+  }
 }

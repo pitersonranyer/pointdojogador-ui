@@ -11,6 +11,7 @@ import { AdicionarPalpitesComponent } from './paginas/parcial/adicionar-palpites
 import { AdministradorComponent } from './paginas/parcial/administrador/administrador.component';
 import { CadastrarCartelaComponent } from './paginas/parcial/cadastrar-cartela/cadastrar-cartela.component';
 import { CadastrarJogosComponent } from './paginas/parcial/cadastrar-jogos/cadastrar-jogos.component';
+import { ConsultarPalpitesComponent } from './paginas/parcial/consultar-palpites/consultar-palpites.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/not-auth.guard';
 
@@ -48,6 +49,11 @@ const routes: Routes = [
   {
     path: 'adicionarPalpites',
     component: AdicionarPalpitesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'consultarPalpites',
+    component: ConsultarPalpitesComponent,
     canActivate: [AuthGuard]
   },
   {

@@ -39,4 +39,9 @@ export class JogosService {
     return this.http.get<Jogos[]>(url);
   }
 
+  consutaJogosPorId(idc: number, idj: number ): Observable<Jogos> {
+    const url = `${environment.linguagensApiUrl}/jogos/${idc}/${idj}`;
+    return this.http.get<Jogos>(url);
+  }
+
 }

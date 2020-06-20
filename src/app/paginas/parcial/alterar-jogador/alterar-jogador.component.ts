@@ -17,7 +17,6 @@ export class AlterarJogadorComponent implements OnInit {
       const dados = `
       Codigo: ${form.value.codigo}`;
 
-      console.log(dados);
     }
 
 }

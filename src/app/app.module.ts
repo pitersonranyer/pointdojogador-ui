@@ -25,6 +25,9 @@ import { AdicionarPalpitesComponent } from './paginas/parcial/adicionar-palpites
 import { AdministradorComponent } from './paginas/parcial/administrador/administrador.component';
 import { CadastrarCartelaComponent } from './paginas/parcial/cadastrar-cartela/cadastrar-cartela.component';
 import { CadastrarJogosComponent } from './paginas/parcial/cadastrar-jogos/cadastrar-jogos.component';
+import { ConsultarPalpitesComponent } from './paginas/parcial/consultar-palpites/consultar-palpites.component';
+import { ModalConfirmaComponent } from './modal/modal-confirma/modal-confirma.component';
+import { SimpleModalModule } from 'ngx-simple-modal';
 
 
 @NgModule({
@@ -42,7 +45,9 @@ import { CadastrarJogosComponent } from './paginas/parcial/cadastrar-jogos/cadas
     AdicionarPalpitesComponent,
     AdministradorComponent,
     CadastrarCartelaComponent,
-    CadastrarJogosComponent
+    CadastrarJogosComponent,
+    ConsultarPalpitesComponent,
+    ModalConfirmaComponent
 
   ],
   imports: [
@@ -52,7 +57,8 @@ import { CadastrarJogosComponent } from './paginas/parcial/cadastrar-jogos/cadas
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(environment.toastConfig)
+    ToastrModule.forRoot(environment.toastConfig),
+    SimpleModalModule.forRoot({container: "modal-container"})
   ],
   providers: [
     {
@@ -65,6 +71,9 @@ import { CadastrarJogosComponent } from './paginas/parcial/cadastrar-jogos/cadas
       useClass: InvalidTokenApiService,
       multi: true
     }
+  ],
+  entryComponents: [
+    ModalConfirmaComponent
   ],
   bootstrap: [AppComponent]
 })

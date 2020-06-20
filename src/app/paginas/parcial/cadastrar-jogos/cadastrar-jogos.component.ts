@@ -25,7 +25,7 @@ export class CadastrarJogosComponent implements OnInit {
     private route: ActivatedRoute,
     public jogosService: JogosService) { }
 
-  ngOnInit() {
+  ngOnInit() { 
 
     this.route.queryParams.subscribe(params => {
       this.idCartela = params.idCartela;
