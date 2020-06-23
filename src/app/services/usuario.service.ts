@@ -27,4 +27,9 @@ export class UsuarioService {
     return this.http.post(url, usuario);
   }
 
+  alterarDadosUsuario(usuario: Usuario): Observable<Usuario> {
+    const url = `${environment.linguagensApiUrl}/usuarios/${usuario._id}`;
+    return this.http.put<Usuario>(url, usuario);
+  }
+
 }
