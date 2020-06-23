@@ -28,6 +28,9 @@ import { CadastrarJogosComponent } from './paginas/parcial/cadastrar-jogos/cadas
 import { ConsultarPalpitesComponent } from './paginas/parcial/consultar-palpites/consultar-palpites.component';
 import { ModalConfirmaComponent } from './modal/modal-confirma/modal-confirma.component';
 import { SimpleModalModule } from 'ngx-simple-modal';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ConsultaPalpitesModalComponent } from './modal/consulta-palpites-modal/consulta-palpites-modal.component';
+
 
 
 @NgModule({
@@ -47,7 +50,8 @@ import { SimpleModalModule } from 'ngx-simple-modal';
     CadastrarCartelaComponent,
     CadastrarJogosComponent,
     ConsultarPalpitesComponent,
-    ModalConfirmaComponent
+    ModalConfirmaComponent,
+    ConsultaPalpitesModalComponent
 
   ],
   imports: [
@@ -57,6 +61,7 @@ import { SimpleModalModule } from 'ngx-simple-modal';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ModalModule.forRoot(),
     ToastrModule.forRoot(environment.toastConfig),
     SimpleModalModule.forRoot({container: "modal-container"})
   ],
@@ -73,7 +78,8 @@ import { SimpleModalModule } from 'ngx-simple-modal';
     }
   ],
   entryComponents: [
-    ModalConfirmaComponent
+    ModalConfirmaComponent,
+    ConsultaPalpitesModalComponent
   ],
   bootstrap: [AppComponent]
 })

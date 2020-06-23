@@ -1,0 +1,68 @@
+<!-- Modal Template -->
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Consultar Palpites</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="decline()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="idCartela" class="font-weight-bold">Cartela</label>
+        <input type="text" readonly class="form-control-plaintext" id="idCartela" name="idCartela"
+        ngModel="{{palpite.idCartela}}">
+      </div>
+
+      <div class="form-group col-md-5">
+        <label for="numeroPalpite" class="font-weight-bold">Palpite</label>
+        <input type="text" readonly class="form-control-plaintext" id="numeroPalpite" name="numeroPalpite"
+        ngModel="{{palpite.idCartela}}">
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-condensed table-striped ">
+    <thead>
+      <th class="col-md-1 text-center" colspan="3">Time Mandante</th>
+      <th class="col-md-1 text-center">X</th>
+      <th class="col-md-1 text-center" colspan="3">Time Vistante</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let itens of listaPalpiteUsuario; let i = index">
+        <td class="col-md-1 text-left">
+          <div class="checkbox icheck-success">
+            <input [checked]="itens.palpiteTimeMandante" type="checkbox" id="{{itens.idTimeMandante}}"
+              name="palpiteTimeMandante" disabled />
+            <label for="{{itens.idTimeMandante}}"></label>
+          </div>
+        </td>
+        <td class="col-md-1 text-left">
+          <img src="{{itens.UrlEscudoMandante}}">
+        </td>
+        <td class="col-md-1 text-left"> {{itens.nomeAbvdMandante}} </td>
+        <td class="col-md-1 text-center">
+          <div class="checkbox icheck-success">
+
+            <input [checked]="itens.palpiteEmpate" type="checkbox" id="{{i}}" name="palpiteEmpate" disabled />
+            <label for="{{i}}"></label>
+          </div>
+        </td>
+        <td class="col-md-1 text-right">
+          <img src="{{itens.UrlEscudoVisitante}}">
+        </td>
+        <td class="col-md-1 text-right"> {{itens.nomeAbvdVisitante}} </td>
+        <td class="col-md-1 text-right">
+          <div class="checkbox icheck-success">
+            <input [checked]="itens.palpiteTimeVisitante" type="checkbox" id="{{itens.idJogos}}"
+              name="palpiteTimeVisitante" disabled />
+            <label for="{{itens.idJogos}}"></label>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="confirm()">Save changes</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="decline()">Close</button>
+  </div>

@@ -1,39 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { PalpiteUsuarioService } from 'src/app/services/palpite-usuario.service';
 import { JogosService } from 'src/app/services/jogos.service';
-import { PalpiteUsuarioJogos } from '../../../interfaces/palpiteUsuarioJogos';
-import { Jogos } from '../../../interfaces/jogos';
+import { PalpiteUsuarioJogos } from '../../interfaces/palpiteUsuarioJogos';
+import { Jogos } from '../../interfaces/jogos';
+
 
 @Component({
-  selector: 'app-consultar-palpites',
-  templateUrl: './consultar-palpites.component.html',
-  styleUrls: ['./consultar-palpites.component.css']
+  selector: 'app-consulta-palpites-modal',
+  templateUrl: './consulta-palpites-modal.component.html',
+  styleUrls: ['./consulta-palpites-modal.component.css']
 })
-export class ConsultarPalpitesComponent implements OnInit {
-  public jogosFim: Jogos = <Jogos>{};
+
+export class ConsultaPalpitesModalComponent implements OnInit {
+  public palpite: {};
   public idCartela: number;
   public idUsuario: number;
   public numeroPalpite: number;
-  public listaPalpiteUsuario = [];
   public palpiteUsuarioJogosArray: Array<PalpiteUsuarioJogos> = [];
-  palpiteUsuario: {};
-
-  constructor(
+  public jogosFim: Jogos = <Jogos>{};
+  public listaPalpiteUsuario = [];
+  name = 'Angular';
+  message = '';
+  constructor(private bsModalRef: BsModalRef,
     public palpiteUsuarioService: PalpiteUsuarioService,
     public jogosService: JogosService,
-    private route: ActivatedRoute
-  ) { }
-
+    public modalService: BsModalService) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.idCartela = params.idCartela;
-      this.numeroPalpite = params.numeroPalpite;
-      this.idUsuario = params.idUsuario;
-      this.palpiteUsuario = params;
-    });
-    this.palpiteUsuarioService.listarPalpiteUsuarioChave(this.idUsuario, this.idCartela, this.numeroPalpite).subscribe((result: any[]) => {
+    this.palpite = this.modalService.config.initialState;
+    this.listarPalpitesUsuario(this.palpite);
+
+    //  this.idCartela = this.modalService.config.initialState.idCartela;
+    //  this.numeroPalpite = this.modalService.config.initialState.numeroPalpite;
+    //  this.idUsuario = this.modalService.config.initialState.idUsuario;
+
+  }
+
+  listarPalpitesUsuario(palpite) {
+    this.palpiteUsuarioService.listarPalpiteUsuarioChave(palpite.idUsuario, palpite.idCartela, palpite.numeroPalpite)
+    .subscribe((result: any[]) => {
       this.palpiteUsuarioJogosArray = result;
       for (let i = 0; i < result.length; i++) {
         const idj = result[i].idJogos;
@@ -56,5 +62,18 @@ export class ConsultarPalpitesComponent implements OnInit {
       this.listaPalpiteUsuario = this.palpiteUsuarioJogosArray;
     });
   }
-}
 
+
+
+  confirm(): void {
+    this.message = 'Confirmed!';
+    this.bsModalRef.hide();
+  }
+
+  decline(): void {
+    this.message = 'Declined!';
+    this.bsModalRef.hide();
+  }
+
+
+}

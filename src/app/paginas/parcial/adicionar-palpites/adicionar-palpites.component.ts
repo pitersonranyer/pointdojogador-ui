@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { JogosService } from 'src/app/services/jogos.service';
@@ -8,7 +8,9 @@ import { Palpite } from '../../../interfaces/palpite';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SimpleModalService } from 'ngx-simple-modal';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalConfirmaComponent } from '../../../modal/modal-confirma/modal-confirma.component';
+import { ConsultaPalpitesModalComponent } from '../../../modal/consulta-palpites-modal/consulta-palpites-modal.component';
 
 @Component({
   selector: 'app-adicionar-palpites',
@@ -28,6 +30,7 @@ export class AdicionarPalpitesComponent implements OnInit {
   idU = 0;
   valida = true;
   confirmResult = null;
+  modalRef: BsModalRef;
 
   comment = null;
   @ViewChild('f')
@@ -38,6 +41,7 @@ export class AdicionarPalpitesComponent implements OnInit {
     public jogosService: JogosService,
     public palpiteUsuarioService: PalpiteUsuarioService,
     private simpleModalService: SimpleModalService,
+    private modalService: BsModalService,
     private router: Router
   ) { }
 
@@ -131,9 +135,9 @@ export class AdicionarPalpitesComponent implements OnInit {
     }
   }
 
-  consultarPalpites(palpite: Palpite): void {
-    this.router.navigate(['/consultarPalpites'], { queryParams: palpite });
-  }
+ // consultarPalpites(palpite: Palpite): void {
+ //   this.router.navigate(['/consultarPalpites'], { queryParams: palpite });
+ // }
 
   excluirPalpite(palpite: Palpite): void {
     this.simpleModalService.addModal(ModalConfirmaComponent, {
@@ -159,6 +163,11 @@ export class AdicionarPalpitesComponent implements OnInit {
         }
 
       });
+  }
+  consultarPalpites(palpite: Palpite): void {
+    this.modalRef = this.modalService.show(ConsultaPalpitesModalComponent, {
+      initialState: palpite
+    });
   }
 }
 
