@@ -30,8 +30,7 @@ import { ModalConfirmaComponent } from './modal/modal-confirma/modal-confirma.co
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ConsultaPalpitesModalComponent } from './modal/consulta-palpites-modal/consulta-palpites-modal.component';
-
-
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -51,8 +50,7 @@ import { ConsultaPalpitesModalComponent } from './modal/consulta-palpites-modal/
     CadastrarJogosComponent,
     ConsultarPalpitesComponent,
     ModalConfirmaComponent,
-    ConsultaPalpitesModalComponent
-
+    ConsultaPalpitesModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,26 +59,24 @@ import { ConsultaPalpitesModalComponent } from './modal/consulta-palpites-modal/
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    InputTextModule,
     ModalModule.forRoot(),
     ToastrModule.forRoot(environment.toastConfig),
-    SimpleModalModule.forRoot({container: "modal-container"})
+    SimpleModalModule.forRoot({ container: 'modal-container' }),
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenApiService,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InvalidTokenApiService,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  entryComponents: [
-    ModalConfirmaComponent,
-    ConsultaPalpitesModalComponent
-  ],
-  bootstrap: [AppComponent]
+  entryComponents: [ModalConfirmaComponent, ConsultaPalpitesModalComponent],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

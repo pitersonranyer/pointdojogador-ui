@@ -4,15 +4,15 @@
 
 export const environment = {
   production: false,
-  linguagensApiUrl: 'http://localhost:3000/api',
- // linguagensApiUrl: 'https://pointdojogador-api.herokuapp.com/api',
+  // linguagensApiUrl: 'http://localhost:3000/api',
+  linguagensApiUrl: 'https://pointdojogador-api.herokuapp.com/api',
   toastConfig: {
     positionClass: 'toast-top-right',
     preventDuplicates: true,
     enableHtml: true,
     progressBar: true,
-    timeOut: 3000
-  }
+    timeOut: 3000,
+  },
 };
 
 export const TOKEN_STORAGE = 'NOME_CHAVE_TOKEN';
