@@ -11,32 +11,43 @@ import { Time } from '../../../interfaces/time';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.css']
+  styleUrls: ['./cadastro.component.css'],
 })
 export class CadastroComponent implements OnInit {
   public usuario: Usuario = <Usuario>{};
   public times: Time[];
   public termoUsuario = false;
-
+  public listaTimes: Time[];
 
   constructor(
     private usuarioService: UsuarioService,
     private authService: AuthService,
     private toastr: ToastrService,
     private timesService: TimesService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.timesService.listartimes().subscribe(data => {
+    this.timesService.listartimes().subscribe((data) => {
       this.times = data;
     });
-}
+  }
+
+  filtrarTimes($event) {
+    this.listaTimes = [];
+    this.times.forEach((time: Time) => {
+      if (
+        time.nomeAbvd.toLocaleLowerCase().includes($event.query) ||
+        time.nomeTime.toLocaleLowerCase().includes($event.query)
+      ) {
+        this.listaTimes.push(time);
+      }
+    });
+  }
 
   onSubmit() {
-
     this.usuario.saldo = '0';
 
-    if ( this.usuario.email === 'pitersonranyer@gmail.com') {
+    if (this.usuario.email === 'pitersonranyer@gmail.com') {
       this.usuario.admin = 'S';
     } else {
       this.usuario.admin = 'N';

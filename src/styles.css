@@ -17,7 +17,41 @@ body {
 }
 
 .ui-float-label > label {
+  color: #419a56 !important;
+}
+
+.ui-autocomplete-panel {
+  background-color: #fff !important;
+}
+
+.ui-autocomplete-list-item:hover {
+  background-color: #4caf50 !important;
   color: #fff !important;
+}
+
+.ui-autocomplete {
+  height: 1.5em !important;
+  width: 100% !important;
+}
+
+.ui-autocomplete .ui-autocomplete-dropdown.ui-button.ui-button-icon-only {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  height: 1.5em !important;
+  width: 1.5em !important;
+  padding: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  margin-right: 0 !important;
+  position: absolute !important;
+}
+.ui-autocomplete .ui-autocomplete-dropdown.ui-button.ui-button-icon-only .ui-button-text {
+  display: none;
+}
+.ui-autocomplete .ui-autocomplete-dropdown.ui-button.ui-button-icon-only .pi {
+  color: #757575;
 }
 
 input {
@@ -27,7 +61,7 @@ input {
   border-left: none;
   border-radius: 3px;
   background: transparent;
-  color: white;
+  color: #047b26;
   width: inherit !important;
   margin: 2% !important;
 }
@@ -39,7 +73,7 @@ input {
 .card {
   position: relative;
   z-index: 1;
-  background: rgba(245, 247, 245, 0.7);
+  background: rgba(245, 247, 245, 0.8);
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
@@ -72,4 +106,51 @@ input {
 .card .message a {
   color: #4caf50;
   text-decoration: none;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+input[type='checkbox'] + label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 20px;
+  font: 14px/20px 'Open Sans', Arial, sans-serif;
+  color: #4caf50;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+input[type='checkbox'] + label:last-child {
+  margin-bottom: 0;
+}
+
+input[type='checkbox'] + label:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 4px solid #7abf86;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.6;
+  -webkit-transition: all 0.12s, border-color 0.08s;
+  transition: all 0.12s, border-color 0.08s;
+}
+
+input[type='checkbox']:checked + label:before {
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

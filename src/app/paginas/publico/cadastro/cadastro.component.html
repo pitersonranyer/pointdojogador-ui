@@ -32,46 +32,39 @@
             <label for="float-input">Contato</label>
           </span>
 
-          <!-- <span class="col-md-12 mt-4 ui-float-label">
-            <input id="float-input" type="email" [(ngModel)]="usuario.email" name="email" email required pInputText />
-            <label for="float-input">Email</label>
-          </span> -->
+          <span class="col-md-12 mt-4 ui-float-label">
+            <p-autoComplete
+              [(ngModel)]="usuario.timeFavorito"
+              [suggestions]="listaTimes"
+              (completeMethod)="filtrarTimes($event)"
+              [size]="30"
+              [minLength]="1"
+              [dropdown]="true"
+              [ngModelOptions]="{ standalone: true }"
+              id="float-input"
+              field="nomeTime"
+            >
+              <ng-template let-time pTemplate="item">
+                <div class="ui-helper-clearfix" style="border-bottom: 1px solid #d5d5d5;">
+                  <img [src]="time.UrlEscudo" style="width: 32px; display: inline-block; margin: 5px 0 2px 5px;" />
+                  <div style="font-size: 18px; float: right; margin: 10px 10px 0 0;">{{ time.nomeTime }}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+            <label for="float-input">Digite ou selecione o time</label>
+          </span>
 
-          <div class="form-group">
-            <label for="timeFavorito" class="col-sm-4 col-form-label">Time Favorito</label>
-            <div class="col-sm-12">
-              <select class="form-control" [(ngModel)]="usuario.timeFavorito" name="timeFavorito">
-                <option selected [value]="">Selecione...</option>
-                <option *ngFor="let time of times" value="{{ time.nomeTime }}">
-                  {{ time.nomeTime }}
-                </option>
-              </select>
-              <!-- <input class="form-control" type="timeFavorito" [(ngModel)]="usuario.timeFavorito" name="timeFavorito"
-                timeFavorito placeholder="timeFavorito" required>
-             -->
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="password" class="col-sm-4 col-form-label">Password</label>
-            <div class="col-sm-12">
-              <input
-                class="form-control"
-                type="password"
-                [(ngModel)]="usuario.senha"
-                name="senha"
-                placeholder="Senha"
-                required
-              />
-            </div>
-          </div>
-          <div class="form-check">
-            <div class="checkbox icheck-success">
-              <input type="checkbox" name="success" id="termos" [(ngModel)]="termoUsuario" name="termoUsuario" />
-              <label for="termos">Li e concordo com os termos de uso.</label>
-            </div>
+          <span class="col-md-12 mt-4 ui-float-label">
+            <input id="float-input" type="password" [(ngModel)]="usuario.senha" name="senha" required pInputText />
+            <label for="float-input">Senha</label>
+          </span>
+
+          <div class="form-check mb-4 mt-4">
+            <input type="checkbox" name="success" id="termos" [(ngModel)]="termoUsuario" name="termoUsuario" />
+            <label for="termos">Li e concordo com os termos de uso.</label>
           </div>
           <div class="col-sm-12">
-            <button type="submit" class="btn btn-primary float-right" [disabled]="!f.valid || !termoUsuario">
+            <button type="submit" class="btn float-right" [disabled]="!f.valid || !termoUsuario">
               Cadastrar
             </button>
           </div>
