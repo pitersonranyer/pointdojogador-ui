@@ -8,20 +8,20 @@ import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   public usuario: Usuario = <Usuario>{};
+  public loading: boolean = false;
 
-  constructor(
-    private authService: AuthService,
-    private toastr: ToastrService
-  ) { }
+  constructor(private authService: AuthService, private toastr: ToastrService) {}
 
   onSubmit() {
+    this.loading = true;
     this.authService.logar(this.usuario).subscribe(
       () => {
         this.toastr.success('Login realizado com sucesso.', 'Show!');
+        this.loading = false;
       },
       (erro) => {
         if (erro.status && erro.status === 401) {
@@ -29,6 +29,7 @@ export class LoginComponent {
         } else {
           this.toastr.error('Não foi possível realizar login.', 'Falha!');
         }
+        this.loading = false;
       }
     );
   }

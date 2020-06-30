@@ -12,17 +12,13 @@ import { TokenApi } from '../interfaces/respostas/token-api';
 import { UsuarioService } from './usuario.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private _autenticado: BehaviorSubject<boolean>;
   public readonly autenticado$: Observable<boolean>;
 
-  constructor(
-    private http: HttpClient,
-    private tokenService: TokenService,
-    private usuarioService: UsuarioService
-  ) {
+  constructor(private http: HttpClient, private tokenService: TokenService, private usuarioService: UsuarioService) {
     this._autenticado = new BehaviorSubject(false);
     this.autenticado$ = this._autenticado.asObservable();
   }
@@ -42,7 +38,9 @@ export class AuthService {
   deslogar() {
     const url = `${environment.linguagensApiUrl}/auth/logout`;
     return this.http.post<TokenApi>(url, {}).pipe(
-      finalize(() => { this.resetarSessao(); })
+      finalize(() => {
+        this.resetarSessao();
+      })
     );
   }
 
@@ -59,6 +57,7 @@ export class AuthService {
   }
 
   resetarSessao() {
+    document.body.removeAttribute('class');
     this.tokenService.resetarToken();
     if (this._autenticado.value) {
       this._autenticado.next(false);

@@ -4,52 +4,82 @@
       <h3 class="card-header">Painel do Jogador</h3>
       <div class="card-body">
         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-
           <div class="form-group row">
             <label for="codigo" class="col-sm-2 col-form-label font-weight-bold">Código</label>
             <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="codigo" name="codigo"
-                ngModel="{{ (usuarioService.usuario$ | async)?.id }}">
+              <input
+                type="text"
+                readonly
+                class="form-control-plaintext"
+                id="codigo"
+                name="codigo"
+                ngModel="{{ (usuarioService.usuario$ | async)?.id }}"
+              />
             </div>
           </div>
 
           <div class="form-group row">
             <label for="nome" class="col-sm-2 col-form-label font-weight-bold">Nome</label>
             <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="nome"
-                value="{{ (usuarioService.usuario$ | async)?.nome }}">
+              <input
+                type="text"
+                readonly
+                class="form-control-plaintext"
+                id="nome"
+                value="{{ (usuarioService.usuario$ | async)?.nome }}"
+              />
             </div>
           </div>
 
           <div class="form-group row">
             <label for="email" class="col-sm-2 col-form-label font-weight-bold">E-mail</label>
             <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="email"
-                value="{{ (usuarioService.usuario$ | async)?.email }}">
+              <input
+                type="text"
+                readonly
+                class="form-control-plaintext"
+                id="email"
+                value="{{ (usuarioService.usuario$ | async)?.email }}"
+              />
             </div>
           </div>
 
           <div class="form-group row">
             <label for="contato" class="col-sm-2 col-form-label font-weight-bold">Contato</label>
             <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="contato"
-                value="{{ (usuarioService.usuario$ | async)?.contato }}">
+              <input
+                type="text"
+                readonly
+                class="form-control-plaintext"
+                id="contato"
+                value="{{ (usuarioService.usuario$ | async)?.contato }}"
+              />
             </div>
           </div>
 
           <div class="form-group row">
             <label for="timeFavorito" class="col-sm-2 col-form-label font-weight-bold">Time Favorito</label>
             <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="timeFavorito"
-                value="{{ (usuarioService.usuario$ | async)?.timeFavorito }}">
+              <input
+                type="text"
+                readonly
+                class="form-control-plaintext"
+                id="timeFavorito"
+                value="{{ (usuarioService.usuario$ | async)?.timeFavorito }}"
+              />
             </div>
           </div>
 
           <div class="form-group row">
             <label for="saldo" class="col-sm-2 col-form-label font-weight-bold">Saldo</label>
             <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="saldo"
-                value="{{ (usuarioService.usuario$ | async)?.saldo }}">
+              <input
+                type="text"
+                readonly
+                class="form-control-plaintext"
+                id="saldo"
+                value="{{ (usuarioService.usuario$ | async)?.saldo }}"
+              />
             </div>
           </div>
 
@@ -59,19 +89,26 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroupPrepend">$</span>
 
-                <input type="text" class="form-control" id="addCredito" name="addCredito" ngModel="10"
-                  aria-describedby="inputGroupPrepend">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="addCredito"
+                  name="addCredito"
+                  ngModel="10"
+                  aria-describedby="inputGroupPrepend"
+                />
                 <button type="submit" class="btn btn-success btn-sm">Ok</button>
               </div>
             </div>
           </div>
 
-          <div class=text-right>
+          <div class="text-right">
             <div class="btn-group" role="group" aria-label="Basic example">
               <button type="button" class="btn btn-primary btn-sm" routerLink="/alterarJogador">Alterar Dados</button>
               <div>&nbsp;</div>
-              <button type="button" class="btn btn-primary btn-sm" routerLink="/adicionarPalpites">Adicionar
-                Palpites</button>
+              <button type="button" class="btn btn-primary btn-sm" routerLink="/adicionarPalpites">
+                Adicionar Palpites
+              </button>
             </div>
           </div>
         </form>
@@ -83,53 +120,49 @@
     <div class="card">
       <h3 class="card-header">Jogos da Rodada</h3>
       <div class="card-body">
-
-        <table class="table table-condensed table-striped ">
+        <table class="table table-condensed table-striped">
           <thead>
             <tr>
-              <td align="center" colspan="2" style="font-weight: bold">Time Mandante</td>
-              <td align="center" colspan="2" style="font-weight: bold">Placar</td>
-              <td align="center" colspan="2" style="font-weight: bold">Time Visitante</td>
-              <td align="right" style="font-weight: bold"> Data/Hora </td>
-              <td align="center" style="font-weight: bold"> Local </td>
-              <td align="center" style="font-weight: bold"> Situação </td>
+              <td align="center" colspan="2" style="font-weight: bold;">Time Mandante</td>
+              <td align="center" colspan="2" style="font-weight: bold;">Placar</td>
+              <td align="center" colspan="2" style="font-weight: bold;">Time Visitante</td>
+              <td align="right" style="font-weight: bold;">Data/Hora</td>
+              <td align="center" style="font-weight: bold;">Local</td>
+              <td align="center" style="font-weight: bold;">Situação</td>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let itens of itensJogos">
               <td class="col-md-1 text-right">
-                <img src="{{itens.UrlEscudoMandante}}">
+                <img src="{{ itens.UrlEscudoMandante }}" />
               </td>
               <td class="col-md-1 text-left">
-                <div class="short-div">{{itens.nomeAbvdMandante}}</div>
+                <div class="short-div">{{ itens.nomeAbvdMandante }}</div>
               </td>
               <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value=" ">
+                <input class="form-control" type="text" style="text-align: center;" readonly value=" " />
               </td>
               <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value=" ">
+                <input class="form-control" type="text" style="text-align: center;" readonly value=" " />
               </td>
               <td class="col-md-1 text-right">
-                <img src="{{itens.UrlEscudoVisitante}}">
+                <img src="{{ itens.UrlEscudoVisitante }}" />
               </td>
               <td class="col-md-1 text-left">
-                <div class="short-div">{{itens.nomeAbvdVisitante}}</div>
+                <div class="short-div">{{ itens.nomeAbvdVisitante }}</div>
               </td>
               <td class="col-md-2 text-right">
-                <label>{{itens.dataJogo}}</label>
+                <label>{{ itens.dataJogo }}</label>
               </td>
               <td class="col-md-2 text-center">
-                <label>{{itens.nomeEstadio}}</label>
+                <label>{{ itens.nomeEstadio }}</label>
               </td>
               <td class="col-md-2 text-center">
-                <label>{{itens.situacaoJogo}}</label>
+                <label>{{ itens.situacaoJogo }}</label>
               </td>
             </tr>
-
           </tbody>
-
         </table>
-
       </div>
     </div>
   </div>

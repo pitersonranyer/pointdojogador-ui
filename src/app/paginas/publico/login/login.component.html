@@ -5,6 +5,18 @@
     </div>
   </div>
 </div>
+<div class="combo-loading" *ngIf="loading">
+  <div class="carregando">
+    <ul class="text-center">
+      <li class="carregando-li"><div class="animate-me"></div></li>
+      <li class="carregando-li"><div class="animate-me"></div></li>
+      <li class="carregando-li"><div class="animate-me"></div></li>
+    </ul>
+    <div class="text-loading">
+      <p class="paragrafo-loading" style="text-align: center;">Carregando...</p>
+    </div>
+  </div>
+</div>
 <div class="login-page">
   <div class="card login-card">
     <form class="login-form" #f="ngForm" (ngSubmit)="onSubmit()">
@@ -21,45 +33,3 @@
     </form>
   </div>
 </div>
-
-<!--
-<div class="col-md-5 mx-auto">
-  <div class="card card-1">
-    <div class="card-body">
-      <form #f="ngForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <div class="col-sm-12">
-            <span class="ui-float-label">
-              <input id="float-input" type="email" [(ngModel)]="usuario.email" name="email" required pInputText />
-              <label for="float-input">Email</label>
-            </span>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-12 col-form-label">
-            <span class="ui-float-label">
-              <input id="float-input" type="password" [(ngModel)]="usuario.senha" name="senha" required pInputText />
-              <label for="float-input">Senha</label>
-            </span>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <a routerLink="/cadastro">Não possui uma conta? Cadastre-se.</a>
-        </div>
-        <div class="col-sm-12">
-          <button type="submit" class="btn btn-primary float-right" [disabled]="!f.valid">Login</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div> -->
-
-<!-- <span class="ui-float-label">
-  <input id="float-input" type="email" [(ngModel)]="usuario.email" name="email" email required pInputText />
-  <label for="float-input">Email</label>
-</span>
-<br />
-<span class="ui-float-label">
-  <input id="float-input" type="password" [(ngModel)]="usuario.senha" name="senha" required pInputText />
-  <label for="float-input">Senha</label>
-</span> -->
