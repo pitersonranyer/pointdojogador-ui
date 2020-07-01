@@ -13,6 +13,8 @@ import { AuthService } from '../../../services/auth.service';
 export class LoginComponent {
   public usuario: Usuario = <Usuario>{};
   public loading: boolean = false;
+  public exibeInfo: boolean;
+  public indexLabel: number;
 
   constructor(private authService: AuthService, private toastr: ToastrService) {}
 

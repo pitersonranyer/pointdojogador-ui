@@ -1,0 +1,9 @@
+.card-jogos {
+  width: 75%;
+}
+
+.carregando-jogos {
+  margin: 100px auto;
+  height: 30vh;
+  margin-top: 10%;
+}

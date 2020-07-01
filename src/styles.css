@@ -22,6 +22,18 @@ body.logged {
   background-image: linear-gradient(to right, rgb(196, 210, 197), rgb(151, 158, 208));
 }
 
+hr {
+  background: url(//d27ixrd8sdmf11.cloudfront.net/images/separator.png) no-repeat center top;
+  background-size: cover;
+  border: 0;
+  margin: 0px 0 -110px;
+  padding: 2px;
+}
+
+.texto {
+  color: #14805e;
+}
+
 .navbar {
   overflow: hidden;
   background-color: #14805e !important;
@@ -79,6 +91,10 @@ input {
   color: #047b26;
   width: inherit !important;
   margin: 2% !important;
+}
+
+.ui-menu {
+  background-color: #fff;
 }
 
 .ui-float-label {

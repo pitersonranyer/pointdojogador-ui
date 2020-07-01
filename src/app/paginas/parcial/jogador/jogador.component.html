@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-12 col-md-5">
+<div class="d-flex justify-content-center">
+  <!-- <div class="col-12 col-md-5">
     <div class="card">
       <h3 class="card-header">Painel do Jogador</h3>
       <div class="card-body">
@@ -114,56 +114,52 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="col-12 col-md-7">
-    <div class="card">
-      <h3 class="card-header">Jogos da Rodada</h3>
-      <div class="card-body">
-        <table class="table table-condensed table-striped">
-          <thead>
-            <tr>
-              <td align="center" colspan="2" style="font-weight: bold;">Time Mandante</td>
-              <td align="center" colspan="2" style="font-weight: bold;">Placar</td>
-              <td align="center" colspan="2" style="font-weight: bold;">Time Visitante</td>
-              <td align="right" style="font-weight: bold;">Data/Hora</td>
-              <td align="center" style="font-weight: bold;">Local</td>
-              <td align="center" style="font-weight: bold;">Situação</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let itens of itensJogos">
-              <td class="col-md-1 text-right">
-                <img src="{{ itens.UrlEscudoMandante }}" />
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">{{ itens.nomeAbvdMandante }}</div>
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value=" " />
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value=" " />
-              </td>
-              <td class="col-md-1 text-right">
-                <img src="{{ itens.UrlEscudoVisitante }}" />
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">{{ itens.nomeAbvdVisitante }}</div>
-              </td>
-              <td class="col-md-2 text-right">
-                <label>{{ itens.dataJogo }}</label>
-              </td>
-              <td class="col-md-2 text-center">
-                <label>{{ itens.nomeEstadio }}</label>
-              </td>
-              <td class="col-md-2 text-center">
-                <label>{{ itens.situacaoJogo }}</label>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+  <div class="card card-jogos">
+    <h3 class="card-header texto">Jogos da Rodada</h3>
+    <div *ngIf="itensJogos.length; else loading">
+      <div *ngFor="let itens of itensJogos" class="card mb-2 p-2 w-100">
+        <div class="d-flex justify-content-center">
+          <small class="ml-5">{{ itens.dataJogo }}</small>
+          <small class="ml-5">{{ itens.nomeEstadio }}</small>
+          <small class="ml-5" style="font-weight: bold;"> {{ itens.situacaoJogo }}</small>
+        </div>
+        <hr class="mb-2" />
+        <div class="row">
+          <div class="col text-right">
+            <img width="10%" src="{{ itens.UrlEscudoMandante }}" />
+          </div>
+          <div class="col-md-1 text-right" pTooltip="Time Mandante" tooltipPosition="bottom">
+            <div class="short-div mt-2 texto">{{ itens.nomeAbvdMandante }}</div>
+          </div>
+          <div class="col-md-1">
+            <input class="form-control" type="text" style="text-align: center;" readonly value=" " />
+          </div>
+          <div class="col-md-1">
+            <input class="form-control" type="text" style="text-align: center;" readonly value=" " />
+          </div>
+          <div class="col-md-1 text-left" pTooltip="Time Visitante" tooltipPosition="bottom">
+            <div class="short-div mt-2 texto">{{ itens.nomeAbvdVisitante }}</div>
+          </div>
+          <div class="col text-left">
+            <img width="10%" src="{{ itens.UrlEscudoVisitante }}" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #loading>
+  <div class="carregando carregando-jogos">
+    <ul class="text-center">
+      <li class="carregando-li"><div class="animate-me"></div></li>
+      <li class="carregando-li"><div class="animate-me"></div></li>
+      <li class="carregando-li"><div class="animate-me"></div></li>
+    </ul>
+    <div class="text-loading">
+      <p class="paragrafo-loading" style="text-align: center;">Carregando Jogos...</p>
+    </div>
+  </div>
+</ng-template>

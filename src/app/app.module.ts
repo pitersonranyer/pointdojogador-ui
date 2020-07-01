@@ -32,6 +32,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ConsultaPalpitesModalComponent } from './modal/consulta-palpites-modal/consulta-palpites-modal.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { MenuModule } from 'primeng/menu';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     BrowserAnimationsModule,
     InputTextModule,
     AutoCompleteModule,
+    MenuModule,
+    TooltipModule,
     ModalModule.forRoot(),
     ToastrModule.forRoot(environment.toastConfig),
     SimpleModalModule.forRoot({ container: 'modal-container' }),
