@@ -1,5 +1,6 @@
 <nav class="navbar bg-primary">
-  <a class="navbar-brand text-white" style="cursor: pointer;" routerLink="/dashboard">{{ titulo }}</a>
+  <span style="font-size: 30px; cursor: pointer; color: #fff;" (click)="openNav()">&#9776;</span>
+  <span style="color: #fff; font-size: 25px;">{{ titulo }}</span>
   <ul class="nav justify-content-end">
     <!-- <li class="nav-item">
       <a class="nav-link text-white" style="cursor: pointer;" (click)="deslogar()">Logout</a>
@@ -10,3 +11,8 @@
   </ul>
 </nav>
 <p-menu #menu [popup]="true" [model]="items"></p-menu>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <a href="#">Bem vindo!</a>
+  <a href="#">Item</a>
+</div>
