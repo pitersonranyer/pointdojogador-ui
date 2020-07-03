@@ -19,7 +19,7 @@ export class CabecalhoComponent {
     this.items = [
       {
         label: 'Sair',
-        icon: 'pi pi-fw pi-sign-out',
+        icon: 'fa fa-sign-out',
         command: () => {
           this.deslogar();
         },

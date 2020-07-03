@@ -82,7 +82,7 @@
 
 .menu ul {
   list-style: none;
-  padding: 0.5em 0;
+  /* padding: 0.5em 0; */
   margin: 0;
   color: #fff;
 }
@@ -96,6 +96,16 @@
   background-size: auto 20px;
   /* transition: all 0.15s linear; */
   cursor: pointer;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.menu ul li a:hover {
+  text-decoration: none;
+  color: #fff;
 }
 
 .menu ul li:hover {
