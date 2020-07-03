@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
     this.authService.autenticado$.subscribe((autenticado) => {
       if (autenticado) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/jogador']);
         document.body.setAttribute('class', 'logged');
       } else {
         this.router.navigate(['']);

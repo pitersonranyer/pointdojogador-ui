@@ -20,6 +20,9 @@ body {
 
 body.logged {
   background-image: linear-gradient(to right, rgb(196, 210, 197), rgb(151, 158, 208));
+  transition: 0.5s;
+  width: 82%;
+  margin-left: 18%;
 }
 
 hr {
@@ -36,11 +39,12 @@ hr {
 
 .navbar {
   overflow: hidden;
-  background-color: #14805e !important;
+  background-color: #66cc99 !important;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 82%;
   z-index: 10;
+  transition: 0.5s;
 }
 
 .ui-float-label > label {
@@ -89,7 +93,7 @@ input {
   border-radius: 3px;
   background: transparent;
   color: #047b26;
-  width: inherit !important;
+  width: inherit;
   margin: 2% !important;
 }
 
@@ -106,7 +110,7 @@ input {
   z-index: 1;
   background: rgba(245, 247, 245, 0.8);
   margin: 0 auto 100px;
-  padding: 45px;
+  padding: 10px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }

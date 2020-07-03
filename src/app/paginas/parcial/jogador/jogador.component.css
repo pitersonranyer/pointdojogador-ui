@@ -1,9 +1,38 @@
 .card-jogos {
-  width: 75%;
+  width: 87%;
 }
 
 .carregando-jogos {
   margin: 100px auto;
   height: 30vh;
   margin-top: 10%;
+}
+
+.linha-info {
+  margin-bottom: -6%;
+}
+
+.icon-user {
+  font-size: 50px;
+}
+
+.detalhes {
+  text-align: right;
+  margin-left: auto;
+  padding: 2px;
+  margin-top: 3%;
+}
+
+.card-usuario {
+  color: #66948b;
+}
+
+input.add-creditos {
+  width: 45%;
+}
+
+button {
+  padding: 4px;
+  background: #52b586;
+  width: 15%;
 }

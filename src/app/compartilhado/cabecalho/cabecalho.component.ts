@@ -1,3 +1,4 @@
+import { UsuarioService } from './../../services/usuario.service';
 import { Component, Input } from '@angular/core';
 
 import { ToastrService } from 'ngx-toastr';
@@ -13,28 +14,33 @@ import { MenuItem } from 'primeng/api';
 export class CabecalhoComponent {
   @Input() titulo: string;
   items: MenuItem[];
-  constructor(private authService: AuthService, private toastr: ToastrService) {
+  open: boolean = true;
+  constructor(private authService: AuthService, private toastr: ToastrService, public usuarioService: UsuarioService) {
     this.items = [
       {
-        items: [
-          {
-            label: 'Sair',
-            icon: 'pi pi-fw pi-sign-out',
-            command: () => {
-              this.deslogar();
-            },
-          },
-        ],
+        label: 'Sair',
+        icon: 'pi pi-fw pi-sign-out',
+        command: () => {
+          this.deslogar();
+        },
       },
     ];
   }
 
-  openNav() {
-    document.getElementById('mySidenav').style.width = '250px';
-  }
-
-  closeNav() {
-    document.getElementById('mySidenav').style.width = '0';
+  toglleNav() {
+    if (this.open) {
+      document.getElementsByClassName('logged')[0]['style'].width = '100%';
+      document.getElementsByClassName('logged')[0]['style'].marginLeft = '0';
+      document.getElementsByClassName('navbar')[0]['style'].width = '100%';
+      document.querySelector('nav.menu')['style'].display = 'none';
+    } else {
+      document.body.removeAttribute('class');
+      document.body.removeAttribute('style');
+      document.body.setAttribute('class', 'logged');
+      document.getElementsByClassName('navbar')[0]['style'].width = '82%';
+      document.querySelector('nav.menu')['style'].display = 'block';
+    }
+    this.open = !this.open;
   }
 
   deslogar() {

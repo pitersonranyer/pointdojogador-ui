@@ -1,3 +1,83 @@
+<div class="row justify-content-md-center linha-info">
+  <div class="card card-usuario col-3">
+    <div class="d-flex">
+      <div class="icon-user">
+        <em class="fa fa-shield"></em>
+      </div>
+      <div class="detalhes">
+        <span style="font-weight: bold; font-size: 1.3em;">Time favorito</span>
+        <p>
+          {{ (usuarioService.usuario$ | async)?.timeFavorito }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="card card-usuario col-3">
+    <div class="d-flex">
+      <div class="icon-user">
+        <em class="fa fa-credit-card"></em>
+      </div>
+      <div class="detalhes">
+        <span style="font-weight: bold; font-size: 1.3em;">Saldo</span>
+        <p>{{ (usuarioService.usuario$ | async)?.saldo }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="card card-usuario col-3">
+    <div class="d-flex">
+      <div class="icon-user">
+        <em class="pi pi-dollar"></em>
+      </div>
+      <div class="detalhes">
+        <span style="font-weight: bold; font-size: 1.3em;">Adicionar Créditos</span>
+        <p>
+          <input
+            type="text"
+            class="add-creditos"
+            id="addCredito"
+            name="addCredito"
+            ngModel="10"
+            aria-describedby="inputGroupPrepend"
+          />
+          <button type="submit" class="btn btn-success btn-sm">Ok</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card card-jogos">
+  <h3 class="card-header texto">Jogos da Rodada</h3>
+  <div *ngIf="itensJogos.length; else loading">
+    <div *ngFor="let itens of itensJogos" class="card mb-2 p-2 w-100">
+      <div class="d-flex justify-content-center">
+        <small class="ml-5">{{ itens.dataJogo }}</small>
+        <small class="ml-5">{{ itens.nomeEstadio }}</small>
+        <small class="ml-5" style="font-weight: bold;"> {{ itens.situacaoJogo }}</small>
+      </div>
+      <hr class="mb-2" />
+      <div class="row">
+        <div class="col text-right">
+          <img width="10%" src="{{ itens.UrlEscudoMandante }}" />
+        </div>
+        <div class="col-md-1 text-right" pTooltip="Time Mandante" tooltipPosition="bottom">
+          <div class="short-div mt-2 texto">{{ itens.nomeAbvdMandante }}</div>
+        </div>
+        <div class="col-md-1">
+          <input class="form-control" type="text" style="text-align: center;" readonly value=" " />
+        </div>
+        <div class="col-md-1">
+          <input class="form-control" type="text" style="text-align: center;" readonly value=" " />
+        </div>
+        <div class="col-md-1 text-left" pTooltip="Time Visitante" tooltipPosition="bottom">
+          <div class="short-div mt-2 texto">{{ itens.nomeAbvdVisitante }}</div>
+        </div>
+        <div class="col text-left">
+          <img width="10%" src="{{ itens.UrlEscudoVisitante }}" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="d-flex justify-content-center">
   <!-- <div class="col-12 col-md-5">
     <div class="card">
@@ -115,40 +195,6 @@
       </div>
     </div>
   </div> -->
-
-  <div class="card card-jogos">
-    <h3 class="card-header texto">Jogos da Rodada</h3>
-    <div *ngIf="itensJogos.length; else loading">
-      <div *ngFor="let itens of itensJogos" class="card mb-2 p-2 w-100">
-        <div class="d-flex justify-content-center">
-          <small class="ml-5">{{ itens.dataJogo }}</small>
-          <small class="ml-5">{{ itens.nomeEstadio }}</small>
-          <small class="ml-5" style="font-weight: bold;"> {{ itens.situacaoJogo }}</small>
-        </div>
-        <hr class="mb-2" />
-        <div class="row">
-          <div class="col text-right">
-            <img width="10%" src="{{ itens.UrlEscudoMandante }}" />
-          </div>
-          <div class="col-md-1 text-right" pTooltip="Time Mandante" tooltipPosition="bottom">
-            <div class="short-div mt-2 texto">{{ itens.nomeAbvdMandante }}</div>
-          </div>
-          <div class="col-md-1">
-            <input class="form-control" type="text" style="text-align: center;" readonly value=" " />
-          </div>
-          <div class="col-md-1">
-            <input class="form-control" type="text" style="text-align: center;" readonly value=" " />
-          </div>
-          <div class="col-md-1 text-left" pTooltip="Time Visitante" tooltipPosition="bottom">
-            <div class="short-div mt-2 texto">{{ itens.nomeAbvdVisitante }}</div>
-          </div>
-          <div class="col text-left">
-            <img width="10%" src="{{ itens.UrlEscudoVisitante }}" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <ng-template #loading>
