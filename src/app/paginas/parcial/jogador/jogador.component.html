@@ -1,46 +1,59 @@
-<div class="row justify-content-md-center linha-info">
-  <div class="card card-usuario col-3">
-    <div class="d-flex">
-      <div class="icon-user">
-        <em class="fa fa-shield"></em>
-      </div>
-      <div class="detalhes">
-        <span style="font-weight: bold; font-size: 1.3em;">Time favorito</span>
-        <p>
-          {{ (usuarioService.usuario$ | async)?.timeFavorito }}
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="card card-usuario col-3">
-    <div class="d-flex">
-      <div class="icon-user">
-        <em class="fa fa-credit-card"></em>
-      </div>
-      <div class="detalhes">
-        <span style="font-weight: bold; font-size: 1.3em;">Saldo</span>
-        <p>{{ (usuarioService.usuario$ | async)?.saldo }}</p>
+<div class="row justify-content-between justify-content-center linha-info">
+  <div class="col-md-3">
+    <div class="card card-usuario">
+      <div class="d-flex">
+        <div class="icon-user">
+          <em class="fa fa-credit-card"></em>
+        </div>
+        <div class="detalhes">
+          <span style="font-weight: bold; font-size: 1.3em;">Saldo</span>
+          <p>$ {{ (usuarioService.usuario$ | async)?.saldo }}</p>
+        </div>
       </div>
     </div>
   </div>
-  <div class="card card-usuario col-3">
-    <div class="d-flex">
-      <div class="icon-user">
-        <em class="pi pi-dollar"></em>
+  <div class="col-md-3">
+    <div class="card card-usuario">
+      <div class="d-flex">
+        <div class="icon-user">
+          <em class="fa fa-shield"></em>
+        </div>
+        <div class="detalhes">
+          <span style="font-weight: bold; font-size: 1.3em;">Premiação da rodada</span>
+          <p>
+            R$ 15.000,00
+          </p>
+        </div>
       </div>
-      <div class="detalhes">
-        <span style="font-weight: bold; font-size: 1.3em;">Adicionar Créditos</span>
-        <p>
-          <input
-            type="text"
-            class="add-creditos"
-            id="addCredito"
-            name="addCredito"
-            ngModel="10"
-            aria-describedby="inputGroupPrepend"
-          />
-          <button type="submit" class="btn btn-success btn-sm">Ok</button>
-        </p>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card card-usuario">
+      <div class="d-flex">
+        <div class="icon-user">
+          <em class="fa fa-users"></em>
+        </div>
+        <div class="detalhes">
+          <span style="font-weight: bold; font-size: 1.3em;">Jogos da Rodada</span>
+          <p>
+            45
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card card-usuario">
+      <div class="d-flex">
+        <div class="icon-user">
+          <em class="fa fa-cart-plus"></em>
+        </div>
+        <div class="detalhes">
+          <span style="font-weight: bold; font-size: 1.3em;">Mercado Aberto</span>
+          <p>
+            26/08 às 18:00
+          </p>
+        </div>
       </div>
     </div>
   </div>
