@@ -34,6 +34,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { MenuModule } from 'primeng/menu';
 import { TooltipModule } from 'primeng/tooltip';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { TooltipModule } from 'primeng/tooltip';
     AutoCompleteModule,
     MenuModule,
     TooltipModule,
+    InputTextareaModule,
     ModalModule.forRoot(),
     ToastrModule.forRoot(environment.toastConfig),
     SimpleModalModule.forRoot({ container: 'modal-container' }),
