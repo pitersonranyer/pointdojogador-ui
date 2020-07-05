@@ -35,6 +35,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { MenuModule } from 'primeng/menu';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     AutoCompleteModule,
     MenuModule,
     TooltipModule,
+    CalendarModule,
     InputTextareaModule,
     ModalModule.forRoot(),
     ToastrModule.forRoot(environment.toastConfig),

@@ -1,3 +1,7 @@
+textarea {
+  width: 150%;
+}
+
 .button-secondary {
   color: #fff;
   background-color: #6c757d;
@@ -17,4 +21,40 @@
 .card-cartela textarea {
   background: white !important;
   border: none;
+}
+
+/* teste */
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande',
+    sans-serif;
+}
+
+.numero {
+  text-align: center;
+  padding-top: 22px;
+  line-height: 15px;
+  height: 85px;
+  width: 85px;
+  font-size: 20px;
+  float: left;
+  margin: 0 20px;
+  font-weight: bold;
+  border-radius: 50%;
+  -khtml-border-radius: 50%;
+  background: #52b586;
+  color: #fff;
+  box-shadow: 0 0 0 1px #fff inset;
+  border: 2px solid #66cc99;
+}
+
+p span {
+  display: block;
+  text-transform: uppercase;
+  font-size: 30px;
+  margin-top: 12%;
 }

@@ -1,27 +1,14 @@
-<div class="card">
+<div class="card mb-3">
   <h3 class="card-header texto">Cadastrar Cartela</h3>
   <div class="card-body card-cartela">
     <form (ngSubmit)="onSubmit(f)" class="d-flex justify-content-between justify-content-center" #f="ngForm">
       <span class="ml-2 ui-float-label">
-        <input type="text" readonly id="codigo" name="codigo" required pInputText />
-        <label for="codigo">Cartela</label>
-      </span>
-
-      <span class="ml-2 ui-float-label">
-        <input
-          required
-          pInputText
-          type="text"
-          [(ngModel)]="cartela.dataInicio"
-          name="dataInicio"
-          required
-          id="data-inicio"
-        />
+        <p-calendar dateFormat="dd/mm/yy" [locale]="pt" [(ngModel)]="cartela.dataInicio"></p-calendar>
         <label for="data-inicio">Data Inicio</label>
       </span>
 
       <span class="ml-2 ui-float-label">
-        <input required pInputText type="text" [(ngModel)]="cartela.dataFim" name="dataFim" required id="data-fim" />
+        <p-calendar dateFormat="dd/mm/yy" [locale]="pt" [(ngModel)]="cartela.dataInicio"></p-calendar>
         <label for="data-fim">Data Fim</label>
       </span>
 
@@ -47,11 +34,32 @@
   </div>
 </div>
 
-<div class="card">
-  <h3 class="card-header texto">Cartelas</h3>
+<div class="card" *ngIf="itensCartela.length">
   <div class="card-body">
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-      <table class="table table-condensed table-striped">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let cartela of itensCartela">
+          <div class="d-flex justify-content-between justify-content-center">
+            <p class="numero">
+              Cartela<span>{{ cartela.idCartela }}</span>
+            </p>
+            <div class="mr-5 mt-4">
+              <h6>
+                <strong>De {{ cartela.dataInicio }} a {{ cartela.dataFim }}</strong>
+              </h6>
+              <div>
+                <h4>
+                  {{ cartela.descricao }}
+                </h4>
+              </div>
+            </div>
+            <div class="mt-3">
+              <button (click)="cadastrarJogos(cartela)">Cadastrar Jogos</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <!-- <table class="table table-condensed table-striped">
         <thead>
           <tr>
             <td align="left" style="font-weight: bold;">Número Cartela</td>
@@ -80,7 +88,7 @@
             </td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
     </form>
   </div>
 </div>

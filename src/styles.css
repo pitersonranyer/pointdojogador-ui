@@ -107,7 +107,6 @@ input {
 
 .card {
   position: relative;
-  z-index: 1;
   background: rgba(245, 247, 245, 0.8);
   margin: 0 auto 100px;
   padding: 10px;
@@ -266,5 +265,15 @@ p.paragrafo-loading {
   80% {
     height: 100%;
   }
+}
+
+.ui-calendar .ui-datepicker {
+  min-width: 100% !important;
+  background: #fff !important;
+}
+
+span.ui-calendar {
+  background: #fff !important;
+  width: 150% !important;
 }
 /* loagind css end */
