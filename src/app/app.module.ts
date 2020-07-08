@@ -36,6 +36,10 @@ import { MenuModule } from 'primeng/menu';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CalendarModule } from 'primeng/calendar';
+import { AccordionModule } from 'primeng/accordion';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { ButtonModule } from 'primeng/button';
+import { PanelMenuModule } from 'primeng/panelmenu';
 
 @NgModule({
   declarations: [
@@ -70,6 +74,10 @@ import { CalendarModule } from 'primeng/calendar';
     TooltipModule,
     CalendarModule,
     InputTextareaModule,
+    AccordionModule,
+    ScrollPanelModule,
+    ButtonModule,
+    PanelMenuModule,
     ModalModule.forRoot(),
     ToastrModule.forRoot(environment.toastConfig),
     SimpleModalModule.forRoot({ container: 'modal-container' }),

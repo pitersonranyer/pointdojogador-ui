@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
 import { UsuarioService } from './../../services/usuario.service';
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 import { ToastrService } from 'ngx-toastr';
 
@@ -10,12 +11,19 @@ import { MenuItem } from 'primeng/api';
   selector: 'app-cabecalho',
   templateUrl: './cabecalho.component.html',
   styleUrls: ['./cabecalho.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CabecalhoComponent {
   @Input() titulo: string;
   items: MenuItem[];
   open: boolean = true;
-  constructor(private authService: AuthService, private toastr: ToastrService, public usuarioService: UsuarioService) {
+  itemMenu: MenuItem[];
+  constructor(
+    private authService: AuthService,
+    private toastr: ToastrService,
+    public usuarioService: UsuarioService,
+    private router: Router
+  ) {
     this.items = [
       {
         label: 'Sair',
@@ -23,6 +31,27 @@ export class CabecalhoComponent {
         command: () => {
           this.deslogar();
         },
+      },
+    ];
+
+    this.itemMenu = [
+      {
+        label: 'Jogos',
+        icon: 'pi pi-pw pi-file',
+        command: () => this.router.navigate(['/jogador']),
+      },
+      {
+        label: 'Configurações',
+        icon: 'pi pi-fw pi-cog',
+        items: [
+          { label: 'Gerenciar Cartela', command: () => this.router.navigate(['/cadastrarCartela']) },
+          { label: 'Autorizar Jogos' },
+          { label: 'Autorizar Jogos Usuário' },
+        ],
+      },
+      {
+        label: 'Usuário',
+        icon: 'pi pi-fw pi-user',
       },
     ];
   }

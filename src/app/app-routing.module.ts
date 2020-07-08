@@ -19,67 +19,68 @@ const routes: Routes = [
   {
     path: '',
     component: BemVindoComponent,
-    canActivate: [NotAuthGuard]
+    canActivate: [NotAuthGuard],
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [NotAuthGuard]
+    canActivate: [NotAuthGuard],
   },
   {
     path: 'cadastro',
     component: CadastroComponent,
-    canActivate: [NotAuthGuard]
+    canActivate: [NotAuthGuard],
   },
   {
     path: 'jogador',
     component: JogadorComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'alterarJogador',
     component: AlterarJogadorComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'adicionarPalpites',
     component: AdicionarPalpitesComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'consultarPalpites',
     component: ConsultarPalpitesComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'painelAdminstrador',
     component: AdministradorComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'cadastrarCartela',
     component: CadastrarCartelaComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
 
   {
     path: 'cadastrarJogos',
     component: CadastrarJogosComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
 
   {
-    path: '**', redirectTo: ''
-  }
+    path: '**',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -77,12 +77,13 @@ hr {
   bottom: 0 !important;
   margin-right: 0 !important;
   position: absolute !important;
+  border: none !important;
 }
 .ui-autocomplete .ui-autocomplete-dropdown.ui-button.ui-button-icon-only .ui-button-text {
-  display: none;
+  display: none !important;
 }
 .ui-autocomplete .ui-autocomplete-dropdown.ui-button.ui-button-icon-only .pi {
-  color: #757575;
+  color: #757575 !important;
 }
 
 input {
