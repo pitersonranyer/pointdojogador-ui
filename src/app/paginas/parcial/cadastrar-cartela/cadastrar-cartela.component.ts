@@ -82,6 +82,7 @@ export class CadastrarCartelaComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    console.log(this.cartela);
     this.cartelaService.cadastrar(this.cartela).subscribe(
       () => {
         this.toastr.success('Cadastro realizado com sucesso', 'Show!');
