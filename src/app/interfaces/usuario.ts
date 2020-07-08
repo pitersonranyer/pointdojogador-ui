@@ -5,7 +5,7 @@ export interface Usuario {
  senha: string;
  contato: string;
  timeFavorito: string;
- saldo: string;
- admin: string;
+ saldo: number;
+ admin: boolean;
 
 }

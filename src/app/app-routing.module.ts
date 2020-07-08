@@ -12,6 +12,13 @@ import { AdministradorComponent } from './paginas/parcial/administrador/administ
 import { CadastrarCartelaComponent } from './paginas/parcial/cadastrar-cartela/cadastrar-cartela.component';
 import { CadastrarJogosComponent } from './paginas/parcial/cadastrar-jogos/cadastrar-jogos.component';
 import { ConsultarPalpitesComponent } from './paginas/parcial/consultar-palpites/consultar-palpites.component';
+import { PerfilUsuarioComponent } from './paginas/parcial/perfil-usuario/perfil-usuario.component';
+import { PerfilUsuarioAlterarSenhaComponent } from './paginas/parcial/perfil-usuario-alterar-senha/perfil-usuario-alterar-senha.component';
+// tslint:disable-next-line: max-line-length
+import { PerfilUsuarioSolicitarCreditoComponent } from './paginas/parcial/perfil-usuario-solicitar-credito/perfil-usuario-solicitar-credito.component';
+import { PerfilUsuarioAlterarDadosComponent } from './paginas/parcial/perfil-usuario-alterar-dados/perfil-usuario-alterar-dados.component';
+import { ListarPendenciaSaldoUsuarioComponent } from './paginas/parcial/listar-penencia-saldo-usuario/listar-pendencia-saldo-usuario.component';
+
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/not-auth.guard';
 
@@ -71,6 +78,34 @@ const routes: Routes = [
     path: 'cadastrarJogos',
     component: CadastrarJogosComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'perfilUsuario',
+    component: PerfilUsuarioComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'PerfilUsuarioAlterarSenha',
+    component: PerfilUsuarioAlterarSenhaComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'PerfilUsuarioSolicitarCredito',
+    component: PerfilUsuarioSolicitarCreditoComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'PerfilUsuarioAlterarDados',
+    component: PerfilUsuarioAlterarDadosComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'listarPendenciaSaldoUsuario',
+    component: ListarPendenciaSaldoUsuarioComponent,
+    canActivate: [AuthGuard]
   },
 
   {

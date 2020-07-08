@@ -23,7 +23,7 @@ export class PalpiteUsuarioService {
   }
 
   cadastrar(palpiteUsuario: PalpiteUsuario[]) {
-    const url = `${environment.linguagensApiUrl}/palpiteUsuario`;
+    const url = `${environment.pointdojogadorApiUrl}/palpiteUsuario`;
     return this.http.post(url, palpiteUsuario);
   }
 
@@ -36,21 +36,21 @@ export class PalpiteUsuarioService {
   }
 
   getListaPalpiteUsuario(): Observable<PalpiteUsuario[]> {
-    const url = `${environment.linguagensApiUrl}/palpiteUsuario/todos`;
+    const url = `${environment.pointdojogadorApiUrl}/palpiteUsuario/todos`;
     return this.http.get<PalpiteUsuario[]>(url);
   }
 
   listarPalpitePorIdCartelaIdUsuario(idCartela: number, idUsuario: number): Observable<Palpite[]> {
-    const url = `${environment.linguagensApiUrl}/palpite/${idCartela}/${idUsuario}`;
+    const url = `${environment.pointdojogadorApiUrl}/palpite/${idCartela}/${idUsuario}`;
     return this.http.get<Palpite[]>(url);
   }
 
   listarPalpiteUsuarioChave(idCartela: number, idUsuario: number, numeroPalpite: number): Observable<PalpiteUsuario[]> {
-    const url = `${environment.linguagensApiUrl}/palpiteUsuario/${idCartela}/${idUsuario}/${numeroPalpite}`;
+    const url = `${environment.pointdojogadorApiUrl}/palpiteUsuario/${idCartela}/${idUsuario}/${numeroPalpite}`;
     return this.http.get<PalpiteUsuario[]>(url);
   }
   deletaPalpite(idCartela: number, idUsuario: number, numeroPalpite: number): Observable<PalpiteUsuario> {
-    const url = `${environment.linguagensApiUrl}/palpiteUsuario/${idCartela}/${idUsuario}/${numeroPalpite}`;
+    const url = `${environment.pointdojogadorApiUrl}/palpiteUsuario/${idCartela}/${idUsuario}/${numeroPalpite}`;
     return this.http.delete<PalpiteUsuario>(url);
   }
 }

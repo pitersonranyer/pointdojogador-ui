@@ -22,7 +22,7 @@ export class CartelaService {
   }
 
   cadastrar(cartela: Cartela) {
-    const url = `${environment.linguagensApiUrl}/cartelas`;
+    const url = `${environment.pointdojogadorApiUrl}/cartelas`;
     return this.http.post(url, cartela);
   }
 
@@ -35,7 +35,7 @@ export class CartelaService {
   }
 
   getListaCartelas(): Observable<Cartela[]> {
-    const url = `${environment.linguagensApiUrl}/cartelas/todas`;
+    const url = `${environment.pointdojogadorApiUrl}/cartelas/todas`;
     return this.http.get<Cartela[]>(url);
   }
 

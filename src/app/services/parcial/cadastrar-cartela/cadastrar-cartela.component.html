@@ -1,0 +1,105 @@
+<div>
+  <h4 class="mb-4 text-muted"> Gerenciar </h4>
+  <div class="row">
+    <div class="col-md-12 mb-4 ">
+      <div class="card border-0 rounded-0">
+        <div class="card-title mb-1 p-3">
+          <h5> Cadastrar Cartela </h5>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="form-group row">
+              <label for="codigo" class="col-sm-2 col-form-label font-weight-bold">Cartela</label>
+              <div class="col-sm-10">
+                <div class="input-group-prepend">
+                  <input type="text" readonly class="form-control-plaintext" id="codigo" name="codigo">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="dataInicio" class="col-sm-2 col-form-label font-weight-bold">Data Inicio</label>
+              <div class="col-sm-5">
+                <div class="input-group-prepend">
+                  <input class="form-control" type="text" [(ngModel)]="cartela.dataInicio" name="dataInicio"
+                    placeholder="Data Inicio" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="dataFim" class="col-sm-2 col-form-label font-weight-bold">Data Fim</label>
+              <div class="col-sm-5">
+                <div class="input-group-prepend">
+                  <input class="form-control" type="text" [(ngModel)]="cartela.dataFim" name="dataFim"
+                    placeholder="Data Fim" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="descricao" class="col-sm-2 col-form-label font-weight-bold">Descrição</label>
+              <div class="col-sm-10">
+                <div class="input-group-prepend">
+                  <textarea class="form-control" type="text" [(ngModel)]="cartela.descricao" name="descricao"
+                    placeholder="Descrição" required></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-lightning rounded-0 mb-2 mr-2" routerLink="">Salvar</button>
+              <button type="button " class="btn btn-outline-lightning rounded-0 mb-2"
+                routerLink="/dashboard">Cancel</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 mb-4">
+      <div class="card border-0 rounded-0">
+        <div class="card-title mb-1 p-3">
+          <h5>Cartelas</h5>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <table class="table table-condensed table-striped">
+              <thead>
+                <tr>
+                  <td align="left" style="font-weight: bold">Número Cartela</td>
+                  <td align="left" style="font-weight: bold">Data Inicio</td>
+                  <td align="left" style="font-weight: bold">Data Fim</td>
+                  <td align="left" style="font-weight: bold"> Descrição </td>
+                  <td align="center" style="font-weight: bold"> Ações </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cartela of itensCartela">
+                  <td class="col-md-2 text-left">
+                    {{cartela.idCartela}}
+                  </td>
+                  <td class="col-md-1 text-left">
+                    {{cartela.dataInicio}}
+                  </td>
+                  <td class="col-md-1 text-left">
+                    {{cartela.dataFim}}
+                  </td>
+                  <td class="col-md-2 text-left">
+                    {{cartela.descricao}}
+                  </td>
+                  <td class="col-md-2 text-center">
+                    <a class="btn btn-sm btn-outline-lightning rounded-0 mr-2 " (click)="cadastrarJogos(cartela)">
+                      <i class="far fa-edit"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,7 +22,7 @@ export class TimesService {
   }
 
   cadastrar(times: Time) {
-    const url = `${environment.linguagensApiUrl}/times`;
+    const url = `${environment.pointdojogadorApiUrl}/times`;
     return this.http.post(url, times);
   }
 
@@ -35,13 +35,13 @@ export class TimesService {
   }
 
   getListatimes(): Observable<Time[]> {
-    const url = `${environment.linguagensApiUrl}/times/todos`;
+    const url = `${environment.pointdojogadorApiUrl}/times/todos`;
     return this.http.get<Time[]>(url);
   }
 
 
   consutaTimePorId(id: number): Observable<Time> {
-    const url = `${environment.linguagensApiUrl}/times/${id}`;
+    const url = `${environment.pointdojogadorApiUrl}/times/${id}`;
     return this.http.get<Time>(url);
   }
 

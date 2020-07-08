@@ -18,13 +18,14 @@ export class CadastroComponent implements OnInit {
   public times: Time[];
   public termoUsuario = false;
   public listaTimes: Time[];
+  public timeFavorito: Time = <Time>{};
 
   constructor(
     private usuarioService: UsuarioService,
     private authService: AuthService,
     private toastr: ToastrService,
     private timesService: TimesService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.timesService.listartimes().subscribe((data) => {
@@ -45,14 +46,14 @@ export class CadastroComponent implements OnInit {
   }
 
   onSubmit() {
-    this.usuario.saldo = '0';
+    this.usuario.saldo = 0;
 
     if (this.usuario.email === 'pitersonranyer@gmail.com') {
-      this.usuario.admin = 'S';
+      this.usuario.admin = true;
     } else {
-      this.usuario.admin = 'N';
+      this.usuario.admin = false;
     }
-
+    this.usuario.timeFavorito = this.timeFavorito.nomeTime;
     this.usuarioService.cadastrar(this.usuario).subscribe(
       () => {
         this.authService.logar(this.usuario).subscribe(() => {

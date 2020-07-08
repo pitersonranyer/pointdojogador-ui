@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LinguagemService } from './linguagem.service';
+import { SaldoUsuarioService } from './saldo-usuario.service';
 
-describe('LinguagemService', () => {
+describe('SaldoUsuarioService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: LinguagemService = TestBed.get(LinguagemService);
+    const service: SaldoUsuarioService = TestBed.get(SaldoUsuarioService);
     expect(service).toBeTruthy();
   });
 });

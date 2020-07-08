@@ -1,18 +1,108 @@
-<div class="row">
-  <div class="col-md-12">
-
-    <div class="jumbotron">
-      <h1 class="display-4">Bem vindo, {{ (usuarioService.usuario$ | async)?.nome }}</h1>
-      <p class="lead">Para efetivar seus jogos entre em contato com um de nossos consultores e Boa Sorte!</p>
-
-      <a class="btn btn-primary btn-lg" routerLink="/jogador" role="button">Continuar</a>
-      &nbsp;
-      <a class="btn btn-success btn-lg"  routerLink="/painelAdminstrador" role="button"  >Painel Administrador</a>
-
+<div class="row justify-content-between justify-content-center linha-info">
+  <div class="col-md-3">
+    <div class="card card-usuario">
+      <div class="d-flex">
+        <div class="icon-user">
+          <em class="fa fa-credit-card"></em>
+        </div>
+        <div class="detalhes">
+          <span style="font-weight: bold; font-size: 1.3em;">Saldo</span>
+          <p>$ {{ (usuarioService.usuario$ | async)?.saldo }}</p>
+        </div>
+      </div>
     </div>
-
   </div>
-  
-  
-
+  <div class="col-md-3">
+    <div class="card card-usuario">
+      <div class="d-flex">
+        <div class="icon-user">
+          <em class="fa fa-shield"></em>
+        </div>
+        <div class="detalhes">
+          <span style="font-weight: bold; font-size: 1.3em;">Premiação da rodada</span>
+          <p>
+            R$ 15.000,00
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card card-usuario">
+      <div class="d-flex">
+        <div class="icon-user">
+          <em class="fa fa-users"></em>
+        </div>
+        <div class="detalhes">
+          <span style="font-weight: bold; font-size: 1.3em;">Jogos da Rodada</span>
+          <p>
+            45
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card card-usuario">
+      <div class="d-flex">
+        <div class="icon-user">
+          <em class="fa fa-cart-plus"></em>
+        </div>
+        <div class="detalhes">
+          <span style="font-weight: bold; font-size: 1.3em;">Mercado Aberto</span>
+          <p>
+            26/08 às 18:00
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<div class="card card-jogos m-auto">
+  <h3 class="card-header texto">Jogos da Rodada</h3>
+  <p-scrollPanel [style]="{ width: '100%', height: '540px' }">
+    <div *ngIf="itensJogos.length; else loading">
+      <div *ngFor="let itens of itensJogos" class="card mb-2 p-2 w-100">
+        <div class="d-flex justify-content-center">
+          <small class="ml-5">{{ itens.dataJogo }}</small>
+          <small class="ml-5">{{ itens.nomeEstadio }}</small>
+          <small class="ml-5" style="font-weight: bold;"> {{ itens.situacaoJogo }}</small>
+        </div>
+        <hr class="mb-2" />
+        <div class="row">
+          <div class="col text-right">
+            <img width="10%" src="{{ itens.UrlEscudoMandante }}" />
+          </div>
+          <div class="col-md-1 text-right" pTooltip="Time Mandante" tooltipPosition="bottom">
+            <div class="short-div mt-2 texto">{{ itens.nomeAbvdMandante }}</div>
+          </div>
+          <div class="col-md-1">
+            <input class="form-control" type="text" style="text-align: center;" readonly value=" " />
+          </div>
+          <div class="col-md-1">
+            <input class="form-control" type="text" style="text-align: center;" readonly value=" " />
+          </div>
+          <div class="col-md-1 text-left" pTooltip="Time Visitante" tooltipPosition="bottom">
+            <div class="short-div mt-2 texto">{{ itens.nomeAbvdVisitante }}</div>
+          </div>
+          <div class="col text-left">
+            <img width="10%" src="{{ itens.UrlEscudoVisitante }}" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-scrollPanel>
+</div>
+
+<ng-template #loading>
+  <div class="carregando carregando-jogos">
+    <ul class="text-center">
+      <li class="carregando-li"><div class="animate-me"></div></li>
+      <li class="carregando-li"><div class="animate-me"></div></li>
+      <li class="carregando-li"><div class="animate-me"></div></li>
+    </ul>
+    <div class="text-loading">
+      <p class="paragrafo-loading" style="text-align: center;">Carregando Jogos...</p>
+    </div>
+  </div>
+</ng-template>

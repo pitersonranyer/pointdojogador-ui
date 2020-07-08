@@ -23,13 +23,18 @@ export class UsuarioService {
   }
 
   cadastrar(usuario: Usuario) {
-    const url = `${environment.linguagensApiUrl}/usuarios`;
+    const url = `${environment.pointdojogadorApiUrl}/usuarios`;
     return this.http.post(url, usuario);
   }
 
   alterarDadosUsuario(usuario: Usuario): Observable<Usuario> {
-    const url = `${environment.linguagensApiUrl}/usuarios/${usuario._id}`;
+    const url = `${environment.pointdojogadorApiUrl}/usuarioComum/atualizar`;
     return this.http.put<Usuario>(url, usuario);
+  }
+
+  consutaUsuarioPorId(id: number): Observable<Usuario> {
+    const url = `${environment.pointdojogadorApiUrl}/usuarioComum/${id}`;
+    return this.http.get<Usuario>(url);
   }
 
 }

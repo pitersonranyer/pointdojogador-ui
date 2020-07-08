@@ -22,7 +22,7 @@ export class JogosService {
   }
 
   cadastrar(jogos: Jogos) {
-    const url = `${environment.linguagensApiUrl}/jogos`;
+    const url = `${environment.pointdojogadorApiUrl}/jogos`;
     return this.http.post(url, jogos);
   }
 
@@ -35,12 +35,12 @@ export class JogosService {
   }
 
   getListaJogos(): Observable<Jogos[]> {
-    const url = `${environment.linguagensApiUrl}/jogos/todos`;
+    const url = `${environment.pointdojogadorApiUrl}/jogos/todos`;
     return this.http.get<Jogos[]>(url);
   }
 
   consutaJogosPorId(idc: number, idj: number ): Observable<Jogos> {
-    const url = `${environment.linguagensApiUrl}/jogos/${idc}/${idj}`;
+    const url = `${environment.pointdojogadorApiUrl}/jogos/${idc}/${idj}`;
     return this.http.get<Jogos>(url);
   }
 

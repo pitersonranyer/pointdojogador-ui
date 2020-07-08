@@ -18,6 +18,7 @@ export class CabecalhoComponent {
   items: MenuItem[];
   open: boolean = true;
   itemMenu: MenuItem[];
+  public teste: boolean = true;
   constructor(
     private authService: AuthService,
     private toastr: ToastrService,
@@ -32,26 +33,40 @@ export class CabecalhoComponent {
           this.deslogar();
         },
       },
+      {
+        label: 'Perfil',
+        icon: 'fa fa-user',
+        command: () => {
+          this.router.navigate(['/perfilUsuario']);
+        },
+      },
     ];
 
     this.itemMenu = [
       {
-        label: 'Jogos',
-        icon: 'pi pi-pw pi-file',
-        command: () => this.router.navigate(['/jogador']),
+        label: 'Dashboard',
+        icon: 'pi pi-desktop',
+        command: () => this.router.navigate(['/dashboard']),
       },
       {
-        label: 'Configurações',
+        visible: this.teste,
+        label: 'Gerenciar',
         icon: 'pi pi-fw pi-cog',
         items: [
-          { label: 'Gerenciar Cartela', command: () => this.router.navigate(['/cadastrarCartela']) },
-          { label: 'Autorizar Jogos' },
-          { label: 'Autorizar Jogos Usuário' },
+          { label: 'Adicionar Cartela', command: () => this.router.navigate(['/cadastrarCartela']) },
+          { label: 'Autorizar Crédito', command: () => this.router.navigate(['/listarPendenciaSaldoUsuario']) },
+          { label: 'Listar Usuários', command: () => this.router.navigate(['/#']) },
         ],
       },
       {
-        label: 'Usuário',
-        icon: 'pi pi-fw pi-user',
+        label: 'Adicionar Palpite',
+        icon: 'pi pi-fw pi-pencil',
+        command: () => this.router.navigate(['/adicionarPalpites']),
+      },
+      {
+        label: 'Solicitar Crédito',
+        icon: 'pi pi-id-card',
+        command: () => this.router.navigate(['/PerfilUsuarioSolicitarCredito']),
       },
     ];
   }

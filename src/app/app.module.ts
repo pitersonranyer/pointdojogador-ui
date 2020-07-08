@@ -17,8 +17,6 @@ import { DashboardComponent } from './paginas/parcial/dashboard/dashboard.compon
 import { TokenApiService } from './interceptadores/token-api.service';
 import { InvalidTokenApiService } from './interceptadores/invalid-token-api.service';
 import { environment } from '../environments/environment';
-import { CardListaLinguagensComponent } from './compartilhado/card-lista-linguagens/card-lista-linguagens.component';
-import { CardGraficoLinguagensComponent } from './compartilhado/card-grafico-linguagens/card-grafico-linguagens.component';
 import { JogadorComponent } from './paginas/parcial/jogador/jogador.component';
 import { AlterarJogadorComponent } from './paginas/parcial/alterar-jogador/alterar-jogador.component';
 import { AdicionarPalpitesComponent } from './paginas/parcial/adicionar-palpites/adicionar-palpites.component';
@@ -26,6 +24,12 @@ import { AdministradorComponent } from './paginas/parcial/administrador/administ
 import { CadastrarCartelaComponent } from './paginas/parcial/cadastrar-cartela/cadastrar-cartela.component';
 import { CadastrarJogosComponent } from './paginas/parcial/cadastrar-jogos/cadastrar-jogos.component';
 import { ConsultarPalpitesComponent } from './paginas/parcial/consultar-palpites/consultar-palpites.component';
+import { PerfilUsuarioComponent } from './paginas/parcial/perfil-usuario/perfil-usuario.component';
+import { PerfilUsuarioAlterarSenhaComponent } from './paginas/parcial/perfil-usuario-alterar-senha/perfil-usuario-alterar-senha.component';
+// tslint:disable-next-line: max-line-length
+import { PerfilUsuarioSolicitarCreditoComponent } from './paginas/parcial/perfil-usuario-solicitar-credito/perfil-usuario-solicitar-credito.component';
+import { PerfilUsuarioAlterarDadosComponent } from './paginas/parcial/perfil-usuario-alterar-dados/perfil-usuario-alterar-dados.component';
+import { ListarPendenciaSaldoUsuarioComponent } from './paginas/parcial/listar-penencia-saldo-usuario/listar-pendencia-saldo-usuario.component';
 import { ModalConfirmaComponent } from './modal/modal-confirma/modal-confirma.component';
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -49,8 +53,6 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     LoginComponent,
     CadastroComponent,
     DashboardComponent,
-    CardListaLinguagensComponent,
-    CardGraficoLinguagensComponent,
     JogadorComponent,
     AlterarJogadorComponent,
     AdicionarPalpitesComponent,
@@ -60,6 +62,11 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     ConsultarPalpitesComponent,
     ModalConfirmaComponent,
     ConsultaPalpitesModalComponent,
+    PerfilUsuarioComponent,
+    PerfilUsuarioAlterarSenhaComponent,
+    PerfilUsuarioSolicitarCreditoComponent,
+    PerfilUsuarioAlterarDadosComponent,
+    ListarPendenciaSaldoUsuarioComponent
   ],
   imports: [
     BrowserModule,
