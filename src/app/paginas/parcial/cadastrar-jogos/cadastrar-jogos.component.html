@@ -1,145 +1,125 @@
-<div class="row">
-  <div class="col-12 col-md-5">
-    <div class="card">
-      <h3 class="card-header">Gerenciar Jogos Cartela</h3>
-      <div class="card-body">
-        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-          <div class="form-row">
-            <div class="form-group col-md-2">
-              <label for="idCartela" class="font-weight-bold">Cartela</label>
-              <input type="text" readonly class="form-control-plaintext" id="idCartela" name="idCartela"
-                ngModel="{{cartela.idCartela}}">
-            </div>
-            <div class="form-group col-md-2">
-              <label for="dataInicio" class="font-weight-bold">Data Inicio</label>
-              <input type="text" readonly class="form-control-plaintext" id="dataInicio" name="dataInicio"
-                ngModel="{{cartela.dataInicio}}">
-            </div>
-            <div class="form-group col-md-2">
-              <label for="dataFim" class="font-weight-bold">Data Fim</label>
-              <input type="text" readonly class="form-control-plaintext" id="dataFim" name="dataFim"
-                ngModel="{{cartela.dataFim}}">
-            </div>
-            <div class="form-group col-md-5">
-              <label for="descricao" class="font-weight-bold">Descrição</label>
-              <input type="text" readonly class="form-control-plaintext" id="descricao" name="descricao"
-                ngModel="{{cartela.descricao}}">
-            </div>
+<div class="d-flex">
+  <div class="card">
+    <h3 class="card-header texto">Gerenciar Jogos Cartela</h3>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <label for="idCartela" class="font-weight-bold">Cartela</label>
+            <input
+              type="text"
+              readonly
+              class="form-control-plaintext"
+              id="idCartela"
+              name="idCartela"
+              ngModel="{{ cartela.idCartela }}"
+            />
           </div>
-
-
-
-          <div class="panel panel-default">
-            <table class="table table-condensed table-striped">
-              <thead>
-                <tr>
-                  <td align="center" style="font-weight: bold">Time Mandante</td>
-                  <td align="center" style="font-weight: bold">Time Visitante</td>
-                  <td align="right" style="font-weight: bold"> Data/Hora </td>
-                  <td align="center" style="font-weight: bold"> Local </td>
-                  <td align="center" style="font-weight: bold"> Situação </td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="col-md-2 text-left">
-                    <select class="form-control" [(ngModel)]="jogos.idTimeMandante" name="idTimeMandante" >
-                      <option selected [value]="">Selecione...</option>
-                      <option *ngFor="let time of times let i = index" value={{time.id}} >
-                        {{time.nomeTime}}
-                      </option>
-                    </select>
-                  </td>
-
-                  <td class="col-md-2 text-left">
-                    <select class="form-control" [(ngModel)]="jogos.idTimeVisitante" name="idTimeVisitante" >
-                      <option selected [value]="">Selecione...</option>
-                      <option *ngFor="let time of times" value={{time.id}} >
-                        {{time.nomeTime}}
-                      </option>
-                    </select>
-                  </td>
-                  <td class="col-md-2 text-right">
-                    <input class="form-control" type="text" style="text-align: center;" name="dataJogo" [(ngModel)]="jogos.dataJogo">
-                  </td>
-                  <td class="col-md-2 text-center">
-                    <input class="form-control" type="text" style="text-align: center;" name="nomeEstadio" [(ngModel)]="jogos.nomeEstadio">
-                  </td>
-                  <td class="col-md-2 text-center">
-                    <input class="form-control" type="text" style="text-align: center;" name="situacaoJogo" [(ngModel)]="jogos.situacaoJogo">
-                  </td>
-                </tr>
-
-              </tbody>
-
-            </table>
+          <div class="form-group col-md-2">
+            <label for="dataInicio" class="font-weight-bold">Data Inicio</label>
+            <input
+              type="text"
+              readonly
+              class="form-control-plaintext"
+              id="dataInicio"
+              name="dataInicio"
+              ngModel="{{ cartela.dataInicio }}"
+            />
           </div>
-
-          <div class=text-right>
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-primary btn-sm" routerLink="/cadastrarCartela">Voltar</button>
-              <div>&nbsp;</div>
-              <button type="submit" class="btn btn-success btn-sm" routerLink="">Salvar</button>
-            </div>
+          <div class="form-group col-md-2">
+            <label for="dataFim" class="font-weight-bold">Data Fim</label>
+            <input
+              type="text"
+              readonly
+              class="form-control-plaintext"
+              id="dataFim"
+              name="dataFim"
+              ngModel="{{ cartela.dataFim }}"
+            />
           </div>
-        </form>
-      </div>
+          <div class="form-group col-md-5">
+            <label for="descricao" class="font-weight-bold">Descrição</label>
+            <input
+              type="text"
+              readonly
+              class="form-control-plaintext"
+              id="descricao"
+              name="descricao"
+              ngModel="{{ cartela.descricao }}"
+            />
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <table class="table table-condensed table-striped">
+            <thead>
+              <tr>
+                <td align="center" style="font-weight: bold;">Time Mandante</td>
+                <td align="center" style="font-weight: bold;">Time Visitante</td>
+                <td align="right" style="font-weight: bold;">Data/Hora</td>
+                <td align="center" style="font-weight: bold;">Local</td>
+                <td align="center" style="font-weight: bold;">Situação</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-md-2 text-left">
+                  <select class="form-control" [(ngModel)]="jogos.idTimeMandante" name="idTimeMandante">
+                    <option selected [value]="">Selecione...</option>
+                    <option *ngFor="let time of times; let i = index" value="{{ time.id }}">
+                      {{ time.nomeTime }}
+                    </option>
+                  </select>
+                </td>
+
+                <td class="col-md-2 text-left">
+                  <select class="form-control" [(ngModel)]="jogos.idTimeVisitante" name="idTimeVisitante">
+                    <option selected [value]="">Selecione...</option>
+                    <option *ngFor="let time of times" value="{{ time.id }}">
+                      {{ time.nomeTime }}
+                    </option>
+                  </select>
+                </td>
+                <td class="col-md-2 text-right">
+                  <input
+                    class="form-control"
+                    type="text"
+                    style="text-align: center;"
+                    name="dataJogo"
+                    [(ngModel)]="jogos.dataJogo"
+                  />
+                </td>
+                <td class="col-md-2 text-center">
+                  <input
+                    class="form-control"
+                    type="text"
+                    style="text-align: center;"
+                    name="nomeEstadio"
+                    [(ngModel)]="jogos.nomeEstadio"
+                  />
+                </td>
+                <td class="col-md-2 text-center">
+                  <input
+                    class="form-control"
+                    type="text"
+                    style="text-align: center;"
+                    name="situacaoJogo"
+                    [(ngModel)]="jogos.situacaoJogo"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="text-right">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary btn-sm" routerLink="/cadastrarCartela">Voltar</button>
+            <div>&nbsp;</div>
+            <button type="submit" class="btn btn-success btn-sm" routerLink="">Salvar</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-
-  <div class="col-12 col-md-7">
-    <div class="card">
-      <h3 class="card-header">Jogos da Rodada</h3>
-      <div class="card-body">
-
-        <table class="table table-condensed table-striped ">
-          <thead>
-            <tr >
-              <td align="center" colspan="2" style="font-weight: bold">Time Mandante</td>
-              <td align="center" colspan="2" style="font-weight: bold">Placar</td>
-              <td align="center" colspan="2" style="font-weight: bold">Time Visitante</td>
-              <td align="right" style="font-weight: bold"> Data/Hora </td>
-              <td align="center" style="font-weight: bold"> Local </td>
-              <td align="center" style="font-weight: bold"> Situação </td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let itens of itensJogos">
-              <td class="col-md-1 text-right">
-                <img src="{{itens.UrlEscudoMandante}}">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">{{itens.nomeAbvdMandante}}</div>
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value=" ">
-              </td>
-              <td class="col-md-1 text-center">
-                <input class="form-control" type="text" style="text-align: center;" readonly value=" ">
-              </td>
-              <td class="col-md-1 text-right">
-                <img src="{{itens.UrlEscudoVisitante}}">
-              </td>
-              <td class="col-md-1 text-left">
-                <div class="short-div">{{itens.nomeAbvdVisitante}}</div>
-              </td>
-              <td class="col-md-2 text-right">
-                <label>{{itens.dataJogo}}</label>
-              </td>
-              <td class="col-md-2 text-center">
-                <label>{{itens.nomeEstadio}}</label>
-              </td>
-              <td class="col-md-2 text-center">
-                <label>{{itens.situacaoJogo}}</label>
-              </td>
-            </tr>
-
-          </tbody>
-
-        </table>
-
-      </div>
-    </div>
-  </div>
-
 </div>

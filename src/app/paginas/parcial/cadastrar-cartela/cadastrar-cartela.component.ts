@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { JogosService } from 'src/app/services/jogos.service';
+import { Jogos } from './../../../interfaces/jogos';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TimesService } from 'src/app/services/times.service';
 import { CartelaService } from 'src/app/services/cartela.service';
@@ -12,11 +14,16 @@ import { Router } from '@angular/router';
   selector: 'app-cadastrar-cartela',
   templateUrl: './cadastrar-cartela.component.html',
   styleUrls: ['./cadastrar-cartela.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CadastrarCartelaComponent implements OnInit {
   public cartela: Cartela = <Cartela>{};
   public times: Time[];
+  public jogos: Jogos = <Jogos>{};
   itensCartela = [];
+  indexItem = 0;
+  expanded: boolean = false;
+  carregando: boolean = false;
   pt: {
     firstDayOfWeek: number;
     dayNames: string[];
@@ -29,12 +36,16 @@ export class CadastrarCartelaComponent implements OnInit {
     dateFormat: string;
     weekHeader: string;
   };
+  listaTimes: any[] = [];
+  itensJogos: any[] = [];
+  carregandoCartelas: boolean;
 
   constructor(
     private timesService: TimesService,
     private toastr: ToastrService,
     public cartelaService: CartelaService,
-    private router: Router
+    private router: Router,
+    public jogosService: JogosService
   ) {}
 
   ngOnInit() {
@@ -68,15 +79,45 @@ export class CadastrarCartelaComponent implements OnInit {
     };
 
     this.atualizarListaCartela();
+    this.atualizarListaJogos();
+  }
+
+  atualizarListaJogos() {
+    this.carregando = true;
+    this.jogosService.listarJogos().subscribe(
+      (jogos: any[]) => {
+        this.itensJogos = jogos;
+        this.carregando = false;
+      },
+      () => {
+        this.toastr.error('Falha listar jogos.', 'Falha!');
+        this.carregando = false;
+      }
+    );
+  }
+
+  filtrarTimes($event) {
+    this.listaTimes = [];
+    this.times.forEach((time: Time) => {
+      if (
+        time.nomeAbvd.toLocaleLowerCase().includes($event.query) ||
+        time.nomeTime.toLocaleLowerCase().includes($event.query)
+      ) {
+        this.listaTimes.push(time);
+      }
+    });
   }
 
   atualizarListaCartela() {
+    this.carregandoCartelas = true;
     this.cartelaService.listarCartelas().subscribe(
       (cartela: any[]) => {
         this.itensCartela = cartela;
+        this.carregandoCartelas = false;
       },
       () => {
         this.toastr.error('Falha listar cartelas.', 'Falha!');
+        this.carregandoCartelas = false;
       }
     );
   }
@@ -100,5 +141,33 @@ export class CadastrarCartelaComponent implements OnInit {
 
   cadastrarJogos(cartela: Cartela): void {
     this.router.navigate(['/cadastrarJogos'], { queryParams: cartela });
+  }
+
+  cadastroJogos() {
+    this.timesService.consutaTimePorId(this.jogos.idTimeMandante).subscribe((dadosTimeMandante) => {
+      this.timesService.consutaTimePorId(this.jogos.idTimeVisitante).subscribe((dadosTimeVisitante) => {
+        this.jogos.nomeMandante = dadosTimeMandante.nomeTime;
+        this.jogos.nomeAbvdMandante = dadosTimeMandante.nomeAbvd;
+        this.jogos.UrlEscudoMandante = dadosTimeMandante.UrlEscudo;
+
+        this.jogos.nomeVisitante = dadosTimeVisitante.nomeTime;
+        this.jogos.nomeAbvdVisitante = dadosTimeVisitante.nomeAbvd;
+        this.jogos.UrlEscudoVisitante = dadosTimeVisitante.UrlEscudo;
+
+        this.jogosService.cadastrar(this.jogos).subscribe(
+          () => {
+            this.atualizarListaJogos();
+            this.toastr.success('Cadastro realizado com sucesso', 'Show!');
+          },
+          (erro) => {
+            if (erro.status && erro.status === 409) {
+              this.toastr.error('jogo já cadastrado.', 'Falha!');
+            } else {
+              this.toastr.error('Não foi possível realizar o cadastro do jogo.', 'Falha!');
+            }
+          }
+        );
+      });
+    });
   }
 }

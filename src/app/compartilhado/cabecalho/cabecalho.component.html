@@ -15,15 +15,5 @@
     <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" />
     <h2>{{ (usuarioService.usuario$ | async)?.nome }}</h2>
   </header>
-  <ul>
-    <li class="pi pi-palette">
-      <span> <a [routerLink]="['jogador']" href=""> Jogos</a></span>
-    </li>
-    <li class="pi pi-sliders-h">
-      <span> <a [routerLink]="['painelAdminstrador']" href=""> Configurações</a></span>
-    </li>
-    <li class="pi pi-users">
-      <span> Usuários</span>
-    </li>
-  </ul>
+  <p-panelMenu [model]="itemMenu"></p-panelMenu>
 </nav>

@@ -1,5 +1,6 @@
 textarea {
   width: 150%;
+  color: #047b26;
 }
 
 .button-secondary {
@@ -21,17 +22,6 @@ textarea {
 .card-cartela textarea {
   background: white !important;
   border: none;
-}
-
-/* teste */
-*,
-*:after,
-*:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande',
-    sans-serif;
 }
 
 .numero {
@@ -57,4 +47,82 @@ p span {
   text-transform: uppercase;
   font-size: 30px;
   margin-top: 12%;
+}
+
+.conteudo {
+  padding: 0 18px;
+  max-height: 0;
+  margin-top: 1%;
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+  background-color: #f1f1f1;
+}
+
+.actived {
+  height: -webkit-fill-available;
+  max-height: 418px;
+}
+
+.selecao {
+  font-size: 25px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-jogo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-top: 25%;
+}
+
+p-calendar.data-cartela > span.ui-calendar > input.ui-inputtext {
+  width: 90% !important;
+}
+
+p-calendar.data-jogo > span.ui-calendar > input.ui-inputtext {
+  width: 90% !important;
+}
+
+p-autocomplete.times > span.ui-autocomplete {
+  width: 77% !important;
+}
+
+p-autocomplete.times > span.ui-autocomplete > input {
+  width: 100% !important;
+  background-color: #fff !important;
+}
+
+p-calendar.data-jogo > span {
+  width: 80% !important;
+}
+
+input.situacao {
+  width: 60%;
+  background-color: #fff;
+}
+
+input.local {
+  background-color: #fff;
+}
+
+p-autocomplete.times > span > input {
+  background-color: #fff;
+}
+
+p-autocomplete.times {
+  margin-right: -10% !important;
+}
+
+.card-jogos {
+  width: 87%;
+}
+
+.carregando-jogos-cartela {
+  margin-top: 0 !important;
+}
+
+.carregando-cartela {
+  margin-top: 0 !important;
+  height: 45vh;
 }
