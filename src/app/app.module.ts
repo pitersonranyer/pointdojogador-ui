@@ -44,6 +44,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { ButtonModule } from 'primeng/button';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     PerfilUsuarioAlterarSenhaComponent,
     PerfilUsuarioSolicitarCreditoComponent,
     PerfilUsuarioAlterarDadosComponent,
-    ListarPendenciaSaldoUsuarioComponent
+    ListarPendenciaSaldoUsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +86,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     ScrollPanelModule,
     ButtonModule,
     PanelMenuModule,
+    DialogModule,
     ModalModule.forRoot(),
     ToastrModule.forRoot(environment.toastConfig),
     SimpleModalModule.forRoot({ container: 'modal-container' }),

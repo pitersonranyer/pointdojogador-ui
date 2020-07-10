@@ -37,6 +37,12 @@ hr {
   color: #14805e;
 }
 
+.modal-content {
+  width: 215% !important;
+  margin-left: -30% !important;
+  margin-top: 10% !important;
+}
+
 .navbar {
   overflow: hidden;
   background-color: #66cc99 !important;
