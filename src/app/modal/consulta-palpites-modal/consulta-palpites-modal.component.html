@@ -1,68 +1,58 @@
 <!-- Modal Template -->
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Consultar Palpites</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="decline()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="form-row">
-      <div class="form-group col-md-5">
-        <label for="idCartela" class="font-weight-bold">Cartela</label>
-        <input type="text" readonly class="form-control-plaintext" id="idCartela" name="idCartela"
-        ngModel="{{palpite.idCartela}}">
+<div class="modal-header">
+  <h4 class="modal-title text-center texto">Consultar Palpites</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="decline()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body d-flex">
+  <h4>
+    <span class="badge badge-success mr-2">Cartela {{ palpite.idCartela }}</span>
+  </h4>
+  <h4>
+    <span class="badge badge-secondary">Palpite {{ palpite.idCartela }}</span>
+  </h4>
+</div>
+
+<p-scrollPanel [style]="{ width: '100%', height: '400px', 'margin-bottom': '1%', transition: '0.5s' }" class="mb-2">
+  <div *ngFor="let itens of listaPalpiteUsuario; let i = index" class="card mb-2 p-2 w-100">
+    <div class="d-flex justify-content-between justify-content-center">
+      <div class="col text-right">
+        <img width="15%" src="{{ itens.UrlEscudoMandante }}" />
+      </div>
+      <div class="col-md-1 text-right" pTooltip="Time Mandante" tooltipPosition="bottom">
+        <div class="short-div mt-2 texto texto-time">{{ itens.nomeAbvdMandante }}</div>
+      </div>
+      <div>
+        <span
+          class="mr-3 badge"
+          [ngClass]="{ 'badge-success': itens.palpiteTimeMandante, 'badge-danger': !itens.palpiteTimeMandante }"
+          >{{ itens.palpiteTimeMandante ? 'Vitória' : 'Derrota' }}</span
+        >
+      </div>
+      <div>
+        <span
+          class="badge"
+          [ngClass]="{ 'badge-success': itens.palpiteTimeVisitante, 'badge-danger': !itens.palpiteTimeVisitante }"
+          >{{ itens.palpiteTimeVisitante ? 'Vitória' : 'Derrota' }}</span
+        >
       </div>
 
-      <div class="form-group col-md-5">
-        <label for="numeroPalpite" class="font-weight-bold">Palpite</label>
-        <input type="text" readonly class="form-control-plaintext" id="numeroPalpite" name="numeroPalpite"
-        ngModel="{{palpite.idCartela}}">
+      <div class="col-md-1 text-left" pTooltip="Time Visitante" tooltipPosition="bottom">
+        <div class="short-div mt-2 texto texto-time">{{ itens.nomeAbvdVisitante }}</div>
+      </div>
+      <div class="col text-left">
+        <img width="15%" src="{{ itens.UrlEscudoVisitante }}" />
       </div>
     </div>
+    <div class="d-flex justify-content-center">
+      <span class="badge" [ngClass]="{ 'badge-success': itens.palpiteEmpate, 'badge-secondary': !itens.palpiteEmpate }"
+        >Empate</span
+      >
+    </div>
   </div>
+</p-scrollPanel>
 
-  <table class="table table-condensed table-striped ">
-    <thead>
-      <th class="col-md-1 text-center" colspan="3">Time Mandante</th>
-      <th class="col-md-1 text-center">X</th>
-      <th class="col-md-1 text-center" colspan="3">Time Vistante</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let itens of listaPalpiteUsuario; let i = index">
-        <td class="col-md-1 text-left">
-          <div class="checkbox icheck-success">
-            <input [checked]="itens.palpiteTimeMandante" type="checkbox" id="{{itens.idTimeMandante}}"
-              name="palpiteTimeMandante" disabled />
-            <label for="{{itens.idTimeMandante}}"></label>
-          </div>
-        </td>
-        <td class="col-md-1 text-left">
-          <img src="{{itens.UrlEscudoMandante}}">
-        </td>
-        <td class="col-md-1 text-left"> {{itens.nomeAbvdMandante}} </td>
-        <td class="col-md-1 text-center">
-          <div class="checkbox icheck-success">
-
-            <input [checked]="itens.palpiteEmpate" type="checkbox" id="{{i}}" name="palpiteEmpate" disabled />
-            <label for="{{i}}"></label>
-          </div>
-        </td>
-        <td class="col-md-1 text-right">
-          <img src="{{itens.UrlEscudoVisitante}}">
-        </td>
-        <td class="col-md-1 text-right"> {{itens.nomeAbvdVisitante}} </td>
-        <td class="col-md-1 text-right">
-          <div class="checkbox icheck-success">
-            <input [checked]="itens.palpiteTimeVisitante" type="checkbox" id="{{itens.idJogos}}"
-              name="palpiteTimeVisitante" disabled />
-            <label for="{{itens.idJogos}}"></label>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="confirm()">Save changes</button>
-    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="decline()">Close</button>
-  </div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="decline()">Fechar</button>
+</div>

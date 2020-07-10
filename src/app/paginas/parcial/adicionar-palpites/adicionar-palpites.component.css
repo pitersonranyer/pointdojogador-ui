@@ -5,9 +5,60 @@
 .card-palpite {
   margin: 0 auto 0;
 }
+
+.card-palpite button {
+  width: auto;
+}
+
+.card-palpite button.btn-ver-palpites {
+  background-color: #5d5c5c;
+}
+
+.card-palpite button.btn-ver-palpites:hover {
+  background-color: #383636;
+}
+
+.btn-palpite {
+  background-color: red;
+}
 /* teste */
 .toggle-button {
   margin: 0 7px;
+}
+
+:host ::ng-deep .ui-button {
+  margin: 0.5em 0.5em 0.5em 0;
+  width: 140px;
+}
+@media screen and (max-width: 40em) {
+  :host ::ng-deep .ui-dialog {
+    width: 75vw !important;
+  }
+}
+
+.numero {
+  text-align: center;
+  padding-top: 22px;
+  line-height: 15px;
+  height: 85px;
+  width: 85px;
+  font-size: 20px;
+  float: left;
+  margin: 0 20px;
+  font-weight: bold;
+  border-radius: 50%;
+  -khtml-border-radius: 50%;
+  background: #52b586;
+  color: #fff;
+  box-shadow: 0 0 0 1px #fff inset;
+  border: 2px solid #66cc99;
+}
+
+p span {
+  display: block;
+  text-transform: uppercase;
+  font-size: 30px;
+  margin-top: 12%;
 }
 
 /*

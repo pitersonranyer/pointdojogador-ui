@@ -11,6 +11,7 @@ import { SimpleModalService } from 'ngx-simple-modal';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalConfirmaComponent } from '../../../modal/modal-confirma/modal-confirma.component';
 import { ConsultaPalpitesModalComponent } from '../../../modal/consulta-palpites-modal/consulta-palpites-modal.component';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-adicionar-palpites',
@@ -33,6 +34,8 @@ export class AdicionarPalpitesComponent implements OnInit {
   selecionado: boolean = false;
   indexItem = 0;
   modalRef: BsModalRef;
+  displayModal: boolean;
+  altura = true;
 
   comment = null;
   @ViewChild('f')
@@ -73,7 +76,8 @@ export class AdicionarPalpitesComponent implements OnInit {
   atualizarListaPalpite() {
     // recuperar dados da tela.
     setTimeout(() => {
-      this.idU = this.form.controls.codigo.value;
+      // this.idU = this.form.controls.codigo.value;
+      this.idU = 1;
       this.idC = this.itensJogos[0].idCartela;
       this.palpiteUsuarioService.listarPalpitePorIdCartelaIdUsuario(this.idC, this.idU).subscribe(
         (palpite: any[]) => {
@@ -81,7 +85,7 @@ export class AdicionarPalpitesComponent implements OnInit {
         },
         () => {}
       );
-    });
+    }, 500);
   }
 
   cadastrarPalpites(form: NgForm): void {
