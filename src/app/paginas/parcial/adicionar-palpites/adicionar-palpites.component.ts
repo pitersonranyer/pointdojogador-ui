@@ -49,6 +49,7 @@ export class AdicionarPalpitesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log(this.usuarioService.usuario$);
     this.atualizarListaJogos();
   }
 
@@ -73,7 +74,7 @@ export class AdicionarPalpitesComponent implements OnInit {
   atualizarListaPalpite() {
     // recuperar dados da tela.
     setTimeout(() => {
-      this.idU = this.form.controls.codigo.value;
+      this.idU = 3 ; // this.form.controls.codigo.value ;
       this.idC = this.itensJogos[0].idCartela;
       this.palpiteUsuarioService.listarPalpitePorIdCartelaIdUsuario(this.idC, this.idU).subscribe(
         (palpite: any[]) => {

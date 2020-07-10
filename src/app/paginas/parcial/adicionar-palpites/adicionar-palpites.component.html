@@ -3,6 +3,11 @@
     <h3 class="card-header texto">Cadastrar Palpites</h3>
     <div class="card-body">
       <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group col-md-1">
+          <label for="codigo" class="font-weight-bold">Código</label>
+          <input type="text" readonly class="form-control-plaintext" id="codigo" name="codigo"
+            ngModel="{{ (usuarioService.usuario$ | async)?.id }}">
+        </div>
         <p-scrollPanel [style]="{ width: '100%', height: '615px', 'margin-bottom': '1%' }" class="mb-2">
           <div *ngFor="let itens of itensJogos; let i = index" class="card mb-2 p-2 w-100">
             <div class="d-flex justify-content-between justify-content-center">
@@ -15,12 +20,12 @@
               <!-- teste -->
 
               <div class="toggle-button toggle-button--aava">
-                <input id="{{ 'toggleButtonMandante' + i }}" type="checkbox" />
+                <input id="{{ 'toggleButtonMandante' + i }}" type="checkbox" name="mandante" [(ngModel)]="mandante[i]" />
                 <label for="{{ 'toggleButtonMandante' + i }}" data-text="Vitória" data-off-text="Derrota"></label>
                 <div class="toggle-button__icon"></div>
               </div>
               <div class="toggle-button toggle-button--aava">
-                <input id="{{ 'toggleButtonVisitante' + i }}" type="checkbox" />
+                <input id="{{ 'toggleButtonVisitante' + i }}" type="checkbox"  name="visitante" [(ngModel)]="visitante[i]" />
                 <label for="{{ 'toggleButtonVisitante' + i }}" data-text="Vitória" data-off-text="Derrota"></label>
                 <div class="toggle-button__icon"></div>
               </div>
@@ -35,7 +40,7 @@
             </div>
             <div class="d-flex justify-content-center">
               <div class="toggle-button toggle-button--empate">
-                <input id="{{ 'toggleButtonEmpate' + i }}" type="checkbox" />
+                <input id="{{ 'toggleButtonEmpate' + i }}" type="checkbox"  name="empate" [(ngModel)]="empate[i]"/>
                 <label for="{{ 'toggleButtonEmpate' + i }}" data-text="Empate" data-off-text="Empate"></label>
                 <div class="toggle-button__icon"></div>
               </div>
