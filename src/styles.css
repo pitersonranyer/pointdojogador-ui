@@ -143,11 +143,11 @@ input {
   text-decoration: none;
 }
 
-input[type='checkbox'] {
+input[type='checkbox'].acordo {
   display: none;
 }
 
-input[type='checkbox'] + label {
+input[type='checkbox'].acordo + label {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -160,11 +160,11 @@ input[type='checkbox'] + label {
   -ms-user-select: none;
 }
 
-input[type='checkbox'] + label:last-child {
+input[type='checkbox'].acordo + label:last-child {
   margin-bottom: 0;
 }
 
-input[type='checkbox'] + label:before {
+input[type='checkbox'].acordo + label:before {
   content: '';
   display: block;
   width: 20px;
@@ -178,7 +178,7 @@ input[type='checkbox'] + label:before {
   transition: all 0.12s, border-color 0.08s;
 }
 
-input[type='checkbox']:checked + label:before {
+input[type='checkbox'].acordo:checked + label:before {
   width: 10px;
   top: -5px;
   left: 5px;

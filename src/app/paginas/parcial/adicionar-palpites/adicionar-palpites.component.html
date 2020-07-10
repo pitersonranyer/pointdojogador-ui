@@ -1,119 +1,139 @@
-<div class="row">
-  <div class="col-12 col-md-6">
-    <div class="card">
-      <h3 class="card-header">Cadastrar Palpites</h3>
-      <div class="card-body">
-        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-          <div class="form-row">
-            <div class="form-group col-md-1">
-              <label for="codigo" class="font-weight-bold">Código</label>
-              <input type="text" readonly class="form-control-plaintext" id="codigo" name="codigo"
-                ngModel="{{ (usuarioService.usuario$ | async)?.id }}">
+<div class="col-12">
+  <div class="card card-palpite">
+    <h3 class="card-header texto">Cadastrar Palpites</h3>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <p-scrollPanel [style]="{ width: '100%', height: '615px', 'margin-bottom': '1%' }" class="mb-2">
+          <div *ngFor="let itens of itensJogos; let i = index" class="card mb-2 p-2 w-100">
+            <div class="d-flex justify-content-between justify-content-center">
+              <div class="col text-right">
+                <img width="15%" src="{{ itens.UrlEscudoMandante }}" />
+              </div>
+              <div class="col-md-1 text-right" pTooltip="Time Mandante" tooltipPosition="bottom">
+                <div class="short-div mt-2 texto texto-time">{{ itens.nomeAbvdMandante }}</div>
+              </div>
+              <!-- teste -->
+
+              <div class="toggle-button toggle-button--aava">
+                <input id="{{ 'toggleButtonMandante' + i }}" type="checkbox" />
+                <label for="{{ 'toggleButtonMandante' + i }}" data-text="Vitória" data-off-text="Derrota"></label>
+                <div class="toggle-button__icon"></div>
+              </div>
+              <div class="toggle-button toggle-button--aava">
+                <input id="{{ 'toggleButtonVisitante' + i }}" type="checkbox" />
+                <label for="{{ 'toggleButtonVisitante' + i }}" data-text="Vitória" data-off-text="Derrota"></label>
+                <div class="toggle-button__icon"></div>
+              </div>
+
+              <!-- teste -->
+              <div class="col-md-1 text-left" pTooltip="Time Visitante" tooltipPosition="bottom">
+                <div class="short-div mt-2 texto texto-time">{{ itens.nomeAbvdVisitante }}</div>
+              </div>
+              <div class="col text-left">
+                <img width="15%" src="{{ itens.UrlEscudoVisitante }}" />
+              </div>
             </div>
-
-
-
-            <div class="form-group col-md-4">
-              <label for="nome" class="font-weight-bold">Nome</label>
-              <input type="text" readonly class="form-control-plaintext" id="nome"
-                value="{{ (usuarioService.usuario$ | async)?.nome }}">
-            </div>
-
-
-
-            <div class="form-group col-md-4">
-              <label for="email" class="font-weight-bold">E-mail</label>
-              <input type="text" readonly class="form-control-plaintext" id="email"
-                value="{{ (usuarioService.usuario$ | async)?.email }}">
-            </div>
-
-
-
-            <div class="form-group col-md-3">
-              <label for="contato" class="font-weight-bold">Contato</label>
-              <input type="text" readonly class="form-control-plaintext" id="contato"
-                value="{{ (usuarioService.usuario$ | async)?.contato }}">
-            </div>
-          </div>
-
-            <table class="table table-condensed table-striped ">
-              <thead>
-                <th class="col-md-1 text-center" colspan="3">Time Mandante</th>
-                <th class="col-md-1 text-center">X</th>
-                <th class="col-md-1 text-center" colspan="3">Time Vistante</th>
-              </thead>
-              <tbody>
-                <tr *ngFor="let itens of itensJogos; let i = index">
-                  <td class="col-md-1 text-left">
-                    <div class="checkbox icheck-success">
-                      <input  [(ngModel)]="mandante[i]" type="checkbox" id="{{itens.idTimeMandante}}" name="mandante" /> <label for="{{itens.idTimeMandante}}"></label>
-                    </div>
-                  </td>
-                  <td class="col-md-1 text-left">
-                    <img src="{{itens.UrlEscudoMandante}}">
-                  </td>
-                  <td class="col-md-1 text-left"> {{itens.nomeAbvdMandante}} </td>
-                  <td class="col-md-1 text-center">
-                    <div class="checkbox icheck-success">
-                     
-                      <input  [(ngModel)]="empate[i]" type="checkbox"  id="{{i + 100}}" name="empate" /> <label for="{{i + 100}}"></label>
-                    </div>
-                  </td>
-                  <td class="col-md-1 text-right">
-                    <img src="{{itens.UrlEscudoVisitante}}">
-                  </td>
-                  <td class="col-md-1 text-right"> {{itens.nomeAbvdVisitante}} </td>
-                  <td class="col-md-1 text-right">
-                    <div class="checkbox icheck-success">
-                      <input  [(ngModel)]="visitante[i]" type="checkbox" id="{{itens.idTimeVisitante}}" name="visitante" /> <label for="{{itens.idTimeVisitante}}"></label>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-          <div class=text-right>
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-primary btn-sm" routerLink="/jogador">Voltar</button>
-              <div>&nbsp;</div> 
-              <button class="btn btn-success btn-sm" (click)="cadastrarPalpites()">Salvar</button>
+            <div class="d-flex justify-content-center">
+              <div class="toggle-button toggle-button--empate">
+                <input id="{{ 'toggleButtonEmpate' + i }}" type="checkbox" />
+                <label for="{{ 'toggleButtonEmpate' + i }}" data-text="Empate" data-off-text="Empate"></label>
+                <div class="toggle-button__icon"></div>
+              </div>
             </div>
           </div>
+        </p-scrollPanel>
 
-        </form>
-      </div>
+        <!-- <table class="table table-condensed table-striped">
+          <thead>
+            <th class="col-md-1 text-center" colspan="3">Time Mandante</th>
+            <th class="col-md-1 text-center">X</th>
+            <th class="col-md-1 text-center" colspan="3">Time Vistante</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let itens of itensJogos; let i = index">
+              <td class="col-md-1 text-left">
+                <div class="checkbox icheck-success">
+                  <input [(ngModel)]="mandante[i]" type="checkbox" id="{{ itens.idTimeMandante }}" name="mandante" />
+                  <label for="{{ itens.idTimeMandante }}"></label>
+                </div>
+              </td>
+              <td class="col-md-1 text-left">
+                <img src="{{ itens.UrlEscudoMandante }}" />
+              </td>
+              <td class="col-md-1 text-left">{{ itens.nomeAbvdMandante }}</td>
+              <td class="col-md-1 text-center">
+                <div class="checkbox icheck-success">
+                  <input [(ngModel)]="empate[i]" type="checkbox" id="{{ i + 100 }}" name="empate" />
+                  <label for="{{ i + 100 }}"></label>
+                </div>
+              </td>
+              <td class="col-md-1 text-right">
+                <img src="{{ itens.UrlEscudoVisitante }}" />
+              </td>
+              <td class="col-md-1 text-right">{{ itens.nomeAbvdVisitante }}</td>
+              <td class="col-md-1 text-right">
+                <div class="checkbox icheck-success">
+                  <input [(ngModel)]="visitante[i]" type="checkbox" id="{{ itens.idTimeVisitante }}" name="visitante" />
+                  <label for="{{ itens.idTimeVisitante }}"></label>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table> -->
+
+        <div class="text-right">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button class="btn btn-success btn-sm" (click)="cadastrarPalpites()">Salvar</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
+</div>
 
-  <div class="col-12 col-md-5">
-    <div class="card">
-      <h3 class="card-header">Palpites</h3>
-      <div class="card-body">
-        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+<!-- <div class="col-12 col-md-5">
+  <div class="card">
+    <h3 class="card-header">Palpites</h3>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <table class="table table-condensed table-striped">
           <thead>
             <tr>
-              <td align="left" style="font-weight: bold">Número Cartela</td>
-              <td align="left" style="font-weight: bold">Numero Palpite</td>
-              <td align="center" style="font-weight: bold">Liberado</td>
-              <td align="center" style="font-weight: bold">  </td>
-              <td align="center" style="font-weight: bold">  </td>
+              <td align="left" style="font-weight: bold;">Número Cartela</td>
+              <td align="left" style="font-weight: bold;">Numero Palpite</td>
+              <td align="center" style="font-weight: bold;">Liberado</td>
+              <td align="center" style="font-weight: bold;"></td>
+              <td align="center" style="font-weight: bold;"></td>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let palpite of listaPalpite">
               <td class="col-md-1 text-left">
-                {{palpite.idCartela}}
+                {{ palpite.idCartela }}
               </td>
               <td class="col-md-1 text-left">
-                {{palpite.numeroPalpite}}
+                {{ palpite.numeroPalpite }}
               </td>
               <td class="col-md-1 text-center">
                 <div *ngIf="palpite.palpiteLiberado" class="checkbox icheck-success">
-                  <input  [checked]="palpite.palpiteLiberado" type="checkbox"  id="{{palpite.palpiteLiberado}}" name="palpiteLiberado" disabled /> <label for="{{palpite.palpiteLiberado}}"></label>
+                  <input
+                    [checked]="palpite.palpiteLiberado"
+                    type="checkbox"
+                    id="{{ palpite.palpiteLiberado }}"
+                    name="palpiteLiberado"
+                    disabled
+                  />
+                  <label for="{{ palpite.palpiteLiberado }}"></label>
                 </div>
                 <div *ngIf="!palpite.palpiteLiberado" class="checkbox icheck-danger">
-                  <input  [checked]="true" type="checkbox"  id="{{palpite.palpiteLiberado}}" name="palpiteLiberado" disabled /> <label for="{{palpite.palpiteLiberado}}"></label>
+                  <input
+                    [checked]="true"
+                    type="checkbox"
+                    id="{{ palpite.palpiteLiberado }}"
+                    name="palpiteLiberado"
+                    disabled
+                  />
+                  <label for="{{ palpite.palpiteLiberado }}"></label>
                 </div>
               </td>
               <td class="col-md-1 text-center">
@@ -126,7 +146,6 @@
           </tbody>
         </table>
       </form>
-      </div>
     </div>
   </div>
-</div>
+</div> -->

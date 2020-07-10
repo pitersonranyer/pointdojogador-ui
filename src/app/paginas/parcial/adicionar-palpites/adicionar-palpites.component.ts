@@ -15,7 +15,7 @@ import { ConsultaPalpitesModalComponent } from '../../../modal/consulta-palpites
 @Component({
   selector: 'app-adicionar-palpites',
   templateUrl: './adicionar-palpites.component.html',
-  styleUrls: ['./adicionar-palpites.component.css']
+  styleUrls: ['./adicionar-palpites.component.css'],
 })
 export class AdicionarPalpitesComponent implements OnInit {
   public palpiteUsuario: PalpiteUsuario = <PalpiteUsuario>{};
@@ -30,39 +30,44 @@ export class AdicionarPalpitesComponent implements OnInit {
   idU = 0;
   valida = true;
   confirmResult = null;
+  selecionado: boolean = false;
+  indexItem = 0;
   modalRef: BsModalRef;
 
   comment = null;
   @ViewChild('f')
   form: NgForm;
 
-  constructor(private toastr: ToastrService,
+  constructor(
+    private toastr: ToastrService,
     public usuarioService: UsuarioService,
     public jogosService: JogosService,
     public palpiteUsuarioService: PalpiteUsuarioService,
     private simpleModalService: SimpleModalService,
     private modalService: BsModalService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
-
-
     this.atualizarListaJogos();
-
   }
 
-  onSubmit() {
+  onSubmit() {}
 
+  selecionaCard(event, itens) {
+    itens.selecionado = !itens.selecionado;
   }
 
   atualizarListaJogos() {
-    this.jogosService.listarJogos().subscribe((jogos: any[]) => {
-      this.itensJogos = jogos;
-      this.atualizarListaPalpite();
-    }, () => {
-      this.toastr.error('Falha listar jogos.', 'Falha!');
-    });
+    this.jogosService.listarJogos().subscribe(
+      (jogos: any[]) => {
+        this.itensJogos = jogos;
+        this.atualizarListaPalpite();
+      },
+      () => {
+        this.toastr.error('Falha listar jogos.', 'Falha!');
+      }
+    );
   }
 
   atualizarListaPalpite() {
@@ -70,9 +75,12 @@ export class AdicionarPalpitesComponent implements OnInit {
     setTimeout(() => {
       this.idU = this.form.controls.codigo.value;
       this.idC = this.itensJogos[0].idCartela;
-      this.palpiteUsuarioService.listarPalpitePorIdCartelaIdUsuario(this.idC, this.idU).subscribe((palpite: any[]) => {
-        this.listaPalpite = palpite;
-      }, () => { });
+      this.palpiteUsuarioService.listarPalpitePorIdCartelaIdUsuario(this.idC, this.idU).subscribe(
+        (palpite: any[]) => {
+          this.listaPalpite = palpite;
+        },
+        () => {}
+      );
     });
   }
 
@@ -95,9 +103,11 @@ export class AdicionarPalpitesComponent implements OnInit {
     }
     if (this.count === 3) {
       for (let i = 0; i < this.itensJogos.length; i++) {
-        if (this.mandante[i] && this.visitante[i] && !this.empate[i] ||
-          this.mandante[i] && this.empate[i] && !this.visitante[i] ||
-          this.visitante[i] && this.empate[i] && !this.mandante[i]) {
+        if (
+          (this.mandante[i] && this.visitante[i] && !this.empate[i]) ||
+          (this.mandante[i] && this.empate[i] && !this.visitante[i]) ||
+          (this.visitante[i] && this.empate[i] && !this.mandante[i])
+        ) {
           this.valida = false;
           this.toastr.error('Jogos duplos não são permitidos.', 'Falha!');
         }
@@ -118,7 +128,6 @@ export class AdicionarPalpitesComponent implements OnInit {
         this.palpiteUsuario.palpiteEmpate = this.empate[i];
 
         this.palpiteUsuarioArray.push({ ...this.palpiteUsuario });
-
       }
       this.palpiteUsuarioService.cadastrar(this.palpiteUsuarioArray).subscribe(
         () => {
@@ -131,43 +140,46 @@ export class AdicionarPalpitesComponent implements OnInit {
           } else {
             this.toastr.error('Não foi possível realizar o cadastro o palpite.', 'Falha!');
           }
-        });
+        }
+      );
     }
   }
 
- // consultarPalpites(palpite: Palpite): void {
- //   this.router.navigate(['/consultarPalpites'], { queryParams: palpite });
- // }
+  // consultarPalpites(palpite: Palpite): void {
+  //   this.router.navigate(['/consultarPalpites'], { queryParams: palpite });
+  // }
 
   excluirPalpite(palpite: Palpite): void {
-    this.simpleModalService.addModal(ModalConfirmaComponent, {
-      title: 'Confirmação',
-      message: 'Seu palpite será excluido.'
-    })
+    this.simpleModalService
+      .addModal(ModalConfirmaComponent, {
+        title: 'Confirmação',
+        message: 'Seu palpite será excluido.',
+      })
       .subscribe((isConfirmed) => {
         // Get modal result
         this.confirmResult = isConfirmed;
         if (this.confirmResult) {
-          this.palpiteUsuarioService.deletaPalpite(palpite.idCartela, palpite.idUsuario, palpite.numeroPalpite).subscribe(
-            () => {
-              this.atualizarListaPalpite();
-              this.toastr.success('Exclusão realizada com sucesso', 'Show!');
-            },
-            (erro) => {
-              if (erro.status && erro.status === 404) {
-                this.toastr.error('Exclusão não efetuada, registro inexistente.', 'Falha!');
-              } else {
-                this.toastr.error('Não foi possível realizar a exclusão o palpite.', 'Falha!');
+          this.palpiteUsuarioService
+            .deletaPalpite(palpite.idCartela, palpite.idUsuario, palpite.numeroPalpite)
+            .subscribe(
+              () => {
+                this.atualizarListaPalpite();
+                this.toastr.success('Exclusão realizada com sucesso', 'Show!');
+              },
+              (erro) => {
+                if (erro.status && erro.status === 404) {
+                  this.toastr.error('Exclusão não efetuada, registro inexistente.', 'Falha!');
+                } else {
+                  this.toastr.error('Não foi possível realizar a exclusão o palpite.', 'Falha!');
+                }
               }
-            });
+            );
         }
-
       });
   }
   consultarPalpites(palpite: Palpite): void {
     this.modalRef = this.modalService.show(ConsultaPalpitesModalComponent, {
-      initialState: palpite
+      initialState: palpite,
     });
   }
 }
-
