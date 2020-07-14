@@ -61,6 +61,11 @@ p span {
   margin-top: 12%;
 }
 
+.carregando-palpites {
+  margin: 100px auto;
+  height: 35vh;
+  margin-top: 5%;
+}
 /*
  * Toggle button styles
  */

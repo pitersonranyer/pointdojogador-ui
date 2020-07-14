@@ -4,6 +4,7 @@
     <div class="card-body">
       <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <p-scrollPanel
+          *ngIf="!carregandoPalpites; else loading"
           [style]="{ width: '100%', height: altura ? '587px' : '120px', 'margin-bottom': '1%', transition: '0.5s' }"
           class="mb-2"
         >
@@ -105,3 +106,15 @@
     </p-scrollPanel>
   </div>
 </div>
+<ng-template #loading>
+  <div class="carregando carregando-palpites">
+    <ul class="text-center">
+      <li class="carregando-li"><div class="animate-me"></div></li>
+      <li class="carregando-li"><div class="animate-me"></div></li>
+      <li class="carregando-li"><div class="animate-me"></div></li>
+    </ul>
+    <div class="text-loading">
+      <p class="paragrafo-loading" style="text-align: center;">Carregando Palpites...</p>
+    </div>
+  </div>
+</ng-template>

@@ -36,6 +36,7 @@ export class AdicionarPalpitesComponent implements OnInit {
   modalRef: BsModalRef;
   displayModal: boolean;
   altura = true;
+  carregandoPalpites = false;
 
   comment = null;
   @ViewChild('f')
@@ -62,13 +63,16 @@ export class AdicionarPalpitesComponent implements OnInit {
   }
 
   atualizarListaJogos() {
+    this.carregandoPalpites = true;
     this.jogosService.listarJogos().subscribe(
       (jogos: any[]) => {
         this.itensJogos = jogos;
         this.atualizarListaPalpite();
+        this.carregandoPalpites = false;
       },
       () => {
         this.toastr.error('Falha listar jogos.', 'Falha!');
+        this.carregandoPalpites = false;
       }
     );
   }
