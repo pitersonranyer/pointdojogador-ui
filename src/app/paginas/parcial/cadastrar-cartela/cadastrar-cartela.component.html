@@ -23,6 +23,17 @@
         ></p-calendar>
         <label for="data-fim">Data Fim</label>
       </span>
+      
+      <span class="ml-2 ui-float-label">
+        <input
+              type="text"
+              class="form-control-plaintext"
+              id="valorCartela"
+              name="valorCartela"
+              [(ngModel)]="cartela.valorCartela"
+            />
+        <label for="data-fim">Valor Cartela</label>
+      </span>
 
       <span class="ml-2 ui-float-label">
         <textarea
@@ -39,7 +50,7 @@
 
       <div class="text-right">
         <div class="btn-group" role="group">
-          <button type="submit" class="btn btn-success btn-sm" routerLink="">Salvar</button>
+          <button  class="btn btn-success btn-sm" (click)="cadastrarCartela()">Salvar</button>
         </div>
       </div>
     </form>

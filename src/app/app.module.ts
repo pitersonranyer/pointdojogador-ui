@@ -45,6 +45,8 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { ButtonModule } from 'primeng/button';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DialogModule } from 'primeng/dialog';
+import { ListarUsuariosComponent } from './paginas/parcial/listar-usuarios/listar-usuarios.component';
+import { ListarResultadoParcialComponent } from './paginas/parcial/listar-resultado-parcial/listar-resultado-parcial.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import { DialogModule } from 'primeng/dialog';
     PerfilUsuarioSolicitarCreditoComponent,
     PerfilUsuarioAlterarDadosComponent,
     ListarPendenciaSaldoUsuarioComponent,
+    ListarUsuariosComponent,
+    ListarResultadoParcialComponent,
   ],
   imports: [
     BrowserModule,

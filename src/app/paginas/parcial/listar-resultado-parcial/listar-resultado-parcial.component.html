@@ -1,0 +1,54 @@
+<div class="col-md-12 mb-4">
+  <div class="card border-0 rounded-0">
+    <div class="card-title mb-1 p-3">
+      <h5>Resultado Parcial</h5>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <table class="table table-condensed table-striped">
+          <thead>
+            <tr>
+              <td align="left" style="font-weight: bold">Código</td>
+              <td align="left" style="font-weight: bold">Palpite</td>
+              <td align="left" style="font-weight: bold">Cartlela</td>
+              <td align="left" style="font-weight: bold"> Descrição </td>
+              <td align="left" style="font-weight: bold">Nome </td>
+              <td align="left" style="font-weight: bold"> Contato </td>
+              <td align="left" style="font-weight: bold"> E-mail </td>
+              <td align="left" style="font-weight: bold"> Pontos </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let resultado of listaResultados">
+              <td class="col-md-1 text-left">
+                {{resultado.idUsuario}}
+              </td>
+              <td class="col-md-2 text-left">
+                {{resultado.numeroPalpite}}
+              </td>
+              <td class="col-md-2 text-left">
+                {{resultado.idCartela}}
+              </td>
+              <td class="col-md-2 text-left">
+                {{resultado.descricao}}
+              </td>
+              <td class="col-md-2 text-left">
+                {{resultado.nome}}
+              </td>
+              <td class="col-md-2 text-left">
+                {{resultado.contato}}
+              </td>
+              <td class="col-md-2 text-left">
+                {{resultado.email}}
+              </td>
+              <td class="col-md-2 text-left">
+                {{resultado.total}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+

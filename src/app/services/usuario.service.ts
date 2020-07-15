@@ -6,6 +6,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Usuario } from '../interfaces/usuario';
 import { environment } from '../../environments/environment';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +24,10 @@ export class UsuarioService {
     this._usuario.next(usuario);
   }
 
+  getUsuario() {
+    return this._usuario.asObservable();
+}
+
   cadastrar(usuario: Usuario) {
     const url = `${environment.pointdojogadorApiUrl}/usuarios`;
     return this.http.post(url, usuario);
@@ -35,6 +41,11 @@ export class UsuarioService {
   consutaUsuarioPorId(id: number): Observable<Usuario> {
     const url = `${environment.pointdojogadorApiUrl}/usuarioComum/${id}`;
     return this.http.get<Usuario>(url);
+  }
+
+  listarUsuarios(): Observable<Usuario[]> {
+    const url = `${environment.pointdojogadorApiUrl}/usuarioComum/todos`;
+    return this.http.get<Usuario[]>(url);
   }
 
 }

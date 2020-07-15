@@ -17,7 +17,10 @@ import { PerfilUsuarioAlterarSenhaComponent } from './paginas/parcial/perfil-usu
 // tslint:disable-next-line: max-line-length
 import { PerfilUsuarioSolicitarCreditoComponent } from './paginas/parcial/perfil-usuario-solicitar-credito/perfil-usuario-solicitar-credito.component';
 import { PerfilUsuarioAlterarDadosComponent } from './paginas/parcial/perfil-usuario-alterar-dados/perfil-usuario-alterar-dados.component';
+// tslint:disable-next-line: max-line-length
 import { ListarPendenciaSaldoUsuarioComponent } from './paginas/parcial/listar-penencia-saldo-usuario/listar-pendencia-saldo-usuario.component';
+import { ListarUsuariosComponent } from './paginas/parcial/listar-usuarios/listar-usuarios.component';
+import { ListarResultadoParcialComponent } from './paginas/parcial/listar-resultado-parcial/listar-resultado-parcial.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/not-auth.guard';
@@ -108,6 +111,17 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
+  {
+    path: 'listarUsuarios',
+    component: ListarUsuariosComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'listarResultadoParcial',
+    component: ListarResultadoParcialComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: '**',
     redirectTo: '',

@@ -12,6 +12,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalConfirmaComponent } from '../../../modal/modal-confirma/modal-confirma.component';
 import { ConsultaPalpitesModalComponent } from '../../../modal/consulta-palpites-modal/consulta-palpites-modal.component';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { Observable } from 'rxjs';
+import { Usuario } from 'src/app/interfaces/usuario';
 
 @Component({
   selector: 'app-adicionar-palpites',
@@ -19,6 +21,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./adicionar-palpites.component.css'],
 })
 export class AdicionarPalpitesComponent implements OnInit {
+  usuario$: Observable<Usuario>;
+  usuario: Usuario;
   public palpiteUsuario: PalpiteUsuario = <PalpiteUsuario>{};
   palpiteUsuarioArray: Array<PalpiteUsuario> = [];
   itensJogos = [];
@@ -50,7 +54,10 @@ export class AdicionarPalpitesComponent implements OnInit {
     private simpleModalService: SimpleModalService,
     private modalService: BsModalService,
     private router: Router
-  ) {}
+  ) {
+    this.usuario$ = usuarioService.getUsuario();
+    this.usuario$.subscribe(usuario => this.usuario = usuario);
+  }
 
   ngOnInit() {
     this.atualizarListaJogos();
@@ -80,8 +87,7 @@ export class AdicionarPalpitesComponent implements OnInit {
   atualizarListaPalpite() {
     // recuperar dados da tela.
     setTimeout(() => {
-      // this.idU = this.form.controls.codigo.value;
-      this.idU = 1;
+      this.idU = this.usuario.id;
       this.idC = this.itensJogos[0].idCartela;
       this.palpiteUsuarioService.listarPalpitePorIdCartelaIdUsuario(this.idC, this.idU).subscribe(
         (palpite: any[]) => {

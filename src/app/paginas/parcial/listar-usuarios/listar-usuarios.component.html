@@ -1,0 +1,42 @@
+<div class="col-md-12 mb-4">
+  <div class="card border-0 rounded-0">
+    <div class="card-title mb-1 p-3">
+      <h5>Usuários</h5>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <table class="table table-condensed table-striped">
+          <thead>
+            <tr>
+              <td align="left" style="font-weight: bold">Código</td>
+              <td align="left" style="font-weight: bold">Nome</td>
+              <td align="left" style="font-weight: bold">E-mail</td>
+              <td align="left" style="font-weight: bold"> Contato </td>
+              <td align="left" style="font-weight: bold"> Time Favorito </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios">
+              <td class="col-md-1 text-left">
+                {{usuario.id}}
+              </td>
+              <td class="col-md-2 text-left">
+                {{usuario.nome}}
+              </td>
+              <td class="col-md-2 text-left">
+                {{usuario.email}}
+              </td>
+              <td class="col-md-2 text-left">
+                {{usuario.contato}}
+              </td>
+              <td class="col-md-2 text-left">
+                {{usuario.timeFavorito}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+

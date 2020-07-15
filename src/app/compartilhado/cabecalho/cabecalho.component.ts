@@ -7,6 +7,9 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { MenuItem } from 'primeng/api';
 
+import { Observable } from 'rxjs';
+import { Usuario } from 'src/app/interfaces/usuario';
+
 @Component({
   selector: 'app-cabecalho',
   templateUrl: './cabecalho.component.html',
@@ -14,17 +17,25 @@ import { MenuItem } from 'primeng/api';
   encapsulation: ViewEncapsulation.None,
 })
 export class CabecalhoComponent {
+
+  usuario$: Observable<Usuario>;
+  usuario: Usuario;
+
   @Input() titulo: string;
   items: MenuItem[];
   open: boolean = true;
   itemMenu: MenuItem[];
-  public teste: boolean = true;
+
   constructor(
     private authService: AuthService,
     private toastr: ToastrService,
     public usuarioService: UsuarioService,
     private router: Router
   ) {
+
+    this.usuario$ = usuarioService.getUsuario();
+    this.usuario$.subscribe(usuario => this.usuario = usuario);
+
     this.items = [
       {
         label: 'Sair',
@@ -49,13 +60,13 @@ export class CabecalhoComponent {
         command: () => this.router.navigate(['/dashboard']),
       },
       {
-        visible: this.teste,
+        visible: this.usuario.admin,
         label: 'Gerenciar',
         icon: 'pi pi-fw pi-cog',
         items: [
           { label: 'Adicionar Cartela', command: () => this.router.navigate(['/cadastrarCartela']) },
           { label: 'Autorizar Crédito', command: () => this.router.navigate(['/listarPendenciaSaldoUsuario']) },
-          { label: 'Listar Usuários', command: () => this.router.navigate(['/#']) },
+          { label: 'Listar Usuários', command: () => this.router.navigate(['/listarUsuarios']) },
         ],
       },
       {
@@ -68,7 +79,13 @@ export class CabecalhoComponent {
         icon: 'pi pi-id-card',
         command: () => this.router.navigate(['/PerfilUsuarioSolicitarCredito']),
       },
+      {
+        label: 'Parcias',
+        icon: 'pi pi-list',
+        command: () => this.router.navigate(['/listarResultadoParcial']),
+      },
     ];
+    
   }
 
   toglleNav() {

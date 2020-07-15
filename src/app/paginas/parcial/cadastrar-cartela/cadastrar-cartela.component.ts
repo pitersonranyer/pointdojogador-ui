@@ -7,6 +7,7 @@ import { CartelaService } from 'src/app/services/cartela.service';
 import { Cartela } from '../../../interfaces/cartela';
 import { ToastrService } from 'ngx-toastr';
 import { Time } from '../../../interfaces/time';
+import * as moment from 'moment';
 
 import { Router } from '@angular/router';
 
@@ -39,6 +40,8 @@ export class CadastrarCartelaComponent implements OnInit {
   listaTimes: any[] = [];
   itensJogos: any[] = [];
   carregandoCartelas: boolean;
+  timestampIni = '';
+  timestampFim = '';
 
   constructor(
     private timesService: TimesService,
@@ -46,7 +49,7 @@ export class CadastrarCartelaComponent implements OnInit {
     public cartelaService: CartelaService,
     private router: Router,
     public jogosService: JogosService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.timesService.listartimes().subscribe((data) => {
@@ -123,25 +126,33 @@ export class CadastrarCartelaComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(this.cartela);
-    this.cartelaService.cadastrar(this.cartela).subscribe(
-      () => {
-        this.toastr.success('Cadastro realizado com sucesso', 'Show!');
-        this.atualizarListaCartela();
-      },
-      (erro) => {
-        if (erro.status && erro.status === 409) {
-          this.toastr.error('Cartela ja cadastrada.', 'Falha!');
-        } else {
-          this.toastr.error('Não foi possível realizar cadastro.', 'Falha!');
-        }
-      }
-    );
   }
 
-  cadastrarJogos(cartela: Cartela): void {
-    this.router.navigate(['/cadastrarJogos'], { queryParams: cartela });
-  }
+ cadastrarCartela() {
+  this.timestampIni = moment(this.cartela.dataInicio).format('DD.MM.YYYY');
+  this.timestampFim = moment(this.cartela.dataFim).format('DD.MM.YYYY');
+
+  this.cartela.dataInicio = this.timestampIni;
+  this.cartela.dataFim = this.timestampFim;
+
+  this.cartelaService.cadastrar(this.cartela).subscribe(
+    () => {
+      this.toastr.success('Cadastro realizado com sucesso', 'Show!');
+      this.atualizarListaCartela();
+    },
+    (erro) => {
+      if (erro.status && erro.status === 409) {
+        this.toastr.error('Já existe cartela em andamento.', 'Falha!');
+      } else {
+        this.toastr.error('Não foi possível realizar cadastro.', 'Falha!');
+      }
+    }
+  );
+ }
+
+ // cadastrarJogos(cartela: Cartela): void {
+ //   this.router.navigate(['/cadastrarJogos'], { queryParams: cartela });
+ // }
 
   cadastroJogos() {
     this.timesService.consutaTimePorId(this.jogos.idTimeMandante).subscribe((dadosTimeMandante) => {

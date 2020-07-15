@@ -1,7 +1,9 @@
 export interface Cartela {
-    _id: number;
+    id: number;
     descricao: string;
     dataInicio: string;
     dataFim: string;
-
- }  
+    valorCartela: number;
+    tsEncerramento: string;
+    indicadorLiberacao: boolean;
+ }

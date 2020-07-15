@@ -33,7 +33,7 @@ export class PerfilUsuarioAlterarDadosComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
-    this.usuarioAtu._id = form.value.codigo;
+    this.usuarioAtu.id = form.value.codigo;
     this.usuarioAtu.nome = form.value.nome;
     this.usuarioAtu.email = form.value.email;
     this.usuarioAtu.contato = form.value.contato;

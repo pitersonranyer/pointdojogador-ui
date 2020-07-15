@@ -6,6 +6,7 @@ import { SaldoPendenciaUsuario } from '../../../interfaces/saldoPendenciaUsuario
 import { SaldoUsuario } from '../../../interfaces/saldoUsuario';
 import { Usuario } from '../../../interfaces/usuario';
 import * as moment from 'moment';
+import { Observable } from 'rxjs';
 
 
 
@@ -15,6 +16,8 @@ import * as moment from 'moment';
   styleUrls: ['./listar-pendencia-saldo-usuario.component.scss']
 })
 export class ListarPendenciaSaldoUsuarioComponent implements OnInit {
+  usuarioLogado$: Observable<Usuario>;
+  usuarioLogado: Usuario;
   lista = [];
   public saldoPendenciaUsuarioArray: Array<SaldoPendenciaUsuario> = [];
   public usuariosFim: Usuario = <Usuario>{};
@@ -24,7 +27,12 @@ export class ListarPendenciaSaldoUsuarioComponent implements OnInit {
 
   constructor(public saldoUsuarioService: SaldoUsuarioService,
     public toastr: ToastrService,
-    private usuarioService: UsuarioService) { }
+    private usuarioService: UsuarioService) {
+
+      this.usuarioLogado$ = usuarioService.getUsuario();
+      this.usuarioLogado$.subscribe(usuarioLogado => this.usuarioLogado = usuarioLogado);
+
+    }
 
   ngOnInit() {
     this.timestamp = moment().format('DD.MM.YYYY HH:mm:ss');
@@ -56,7 +64,7 @@ export class ListarPendenciaSaldoUsuarioComponent implements OnInit {
     this.saldoUsuario.idUsuario = pendencia.idUsuario;
     this.saldoUsuario.idSaldoUsuario = pendencia.idSaldoUsuario;
     // ver usuario logado
-    this.saldoUsuario.idUsuarioLiberador = pendencia.idUsuario;
+    this.saldoUsuario.idUsuarioLiberador = this.usuarioLogado.id;
     this.saldoUsuario.tsLiberacao = this.timestamp;
     this.saldoUsuario.valorSolicitado = pendencia.valorSolicitado;
 
