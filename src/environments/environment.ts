@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  pointdojogadorApiUrl: 'http://localhost:3000/api',
-  // pointdojogadorApiUrl: 'https://pointdojogador-api.herokuapp.com/api',
+  // pointdojogadorApiUrl: 'http://localhost:3000/api',
+  pointdojogadorApiUrl: 'https://pointdojogador-api.herokuapp.com/api',
   toastConfig: {
     positionClass: 'toast-top-right',
     preventDuplicates: true,
